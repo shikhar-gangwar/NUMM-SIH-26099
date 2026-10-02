@@ -1,0 +1,11 @@
+equivalences:
+  - standard_a: "IS 1363"
+    standard_b: "ISO 4016"
+    relationship: COMPATIBLE
+    needs_review: true
+    citation: "Hexagon head bolts product grade C equivalent standards"
+  - standard_a: "ASTM A106"
+    standard_b: "ASTM A53"
+    relationship: COMPATIBLE
+    needs_review: true
+    citation: "Seamless carbon steel pipe for high-temperature service"

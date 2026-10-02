@@ -1,0 +1,44 @@
+code: CABLE
+name: Electrical cables and wires
+nmc_prefix: CBL
+version: 1
+classifier_keywords: [CABLE, WIRE, ARMOURED, UNARMOURED, COPPER CABLE, ALUMINIUM CABLE]
+subfamily_attribute: conductor_material
+attributes:
+  - key: conductor_material
+    tier: CRITICAL
+    type: enum
+    values: [COPPER, ALUMINIUM]
+    comparator: EXACT_ENUM
+  - key: cross_section
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm2
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+    variant_axis: true
+  - key: cores
+    tier: CRITICAL
+    type: quantity
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+    variant_axis: true
+  - key: voltage_grade
+    tier: CRITICAL
+    type: enum
+    values: [1.1KV, 3.3KV, 6.6KV, 11KV, 33KV]
+    comparator: EXACT_ENUM
+  - key: insulation
+    tier: CRITICAL
+    type: enum
+    values: [PVC, XLPE]
+    comparator: EXACT_ENUM
+  - key: armoured
+    tier: MAJOR
+    type: enum
+    values: [ARMOURED, UNARMOURED]
+    comparator: EXACT_ENUM
+identity_required: [conductor_material, cross_section, cores, voltage_grade, insulation]
+description_template: "CABLE {cores}CX{cross_section} SQMM {conductor_material} {insulation} {voltage_grade} {armoured}"
+sap_short_template: "CBL {cores}CX{cross_section} {conductor_material} {insulation} {voltage_grade}"

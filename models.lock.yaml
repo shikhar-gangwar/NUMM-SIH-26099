@@ -1,0 +1,14 @@
+# models.lock.yaml - Model Fingerprints & Pinned Revisions
+version: "1.0"
+models:
+  sentence-transformers/all-MiniLM-L6-v2:
+    provider: sentence-transformers
+    kind: EMBEDDING
+    dimension: 384
+    revision: e4fd4ab9e5f9d323e316c245fc858d469b9a14e3
+    digest: sha256:all-minilm-l6-v2-verified
+  BAAI/bge-reranker-v2-m3:
+    provider: cross-encoder
+    kind: RERANKER
+    revision: verify-before-pin
+    digest: sha256:bge-reranker-v2-m3-placeholder

@@ -1,0 +1,31 @@
+code: GASKET
+name: Gaskets and sealing elements
+nmc_prefix: GSKT
+version: 1
+classifier_keywords: [GASKET, SPIRAL WOUND, CAF, RING JOINT, EPDM]
+subfamily_attribute: gasket_type
+attributes:
+  - key: gasket_type
+    tier: CRITICAL
+    type: enum
+    values: [SPIRAL_WOUND, FLAT_RING, RTJ, FULL_FACE]
+    comparator: EXACT_ENUM
+  - key: nominal_size
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: SIZE_TABLE
+    variant_axis: true
+  - key: pressure_class
+    tier: CRITICAL
+    type: enum
+    values: [150, 300, 600, 900, 1500]
+    comparator: EXACT_ENUM
+  - key: material
+    tier: CRITICAL
+    type: enum
+    comparator: MATERIAL_EQUIV
+identity_required: [gasket_type, nominal_size, pressure_class, material]
+description_template: "GASKET {gasket_type} {nominal_size} CLASS {pressure_class} {material}"
+sap_short_template: "GSKT {gasket_type} {nominal_size} CL{pressure_class}"

@@ -1,0 +1,42 @@
+version: 1
+weights:
+  attribute: 0.55
+  semantic: 0.20
+  lexical: 0.15
+  category: 0.10
+  rerank: 0.0
+  history: 0.0
+tier_weights:
+  CRITICAL: 5
+  MAJOR: 2
+  MINOR: 1
+verdict_scores:
+  MATCH: 1.0
+  COMPATIBLE: 0.85
+  UNKNOWN: 0.0
+  CONFLICT: 0.0
+semantic:
+  floor: 0.5
+classification:
+  min_conf: 0.6
+  high_conf: 0.8
+relationship_thresholds:
+  EXACT_DUPLICATE:
+    min_score: 0.95
+    require: [no_conflict, no_unknown_critical_or_major]
+  NEAR_DUPLICATE:
+    min_score: 0.88
+    require: [no_conflict, no_unknown_critical]
+  FUNCTIONALLY_EQUIVALENT:
+    min_score: 0.75
+    require: [no_conflict, no_unknown_critical, at_least_one_compatible]
+  RELATED:
+    min_score: 0.55
+    require: [only_variant_axis_conflicts]
+  REVIEW_REQUIRED_band: [0.60, 0.88]
+auto_accept:
+  enabled: true
+  relationship: [EXACT_DUPLICATE]
+  min_score: 0.97
+  forbid_unknown_any: true
+  min_class_conf: 0.9

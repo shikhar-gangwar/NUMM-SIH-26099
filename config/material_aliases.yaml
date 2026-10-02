@@ -1,0 +1,10 @@
+groups:
+  SS304:
+    canonical: STAINLESS STEEL 304
+    aliases: [SS304, SS 304, AISI 304, 1.4301, A2]
+  SS316:
+    canonical: STAINLESS STEEL 316
+    aliases: [SS316, SS 316, AISI 316, 1.4401, A4]
+  CARBON_STEEL:
+    canonical: CARBON STEEL
+    aliases: [CS, CARBON STEEL, MS, MILD STEEL, A106, A53]

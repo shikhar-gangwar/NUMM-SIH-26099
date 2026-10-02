@@ -1,0 +1,53 @@
+code: BOLT
+name: Bolts, studs and screws
+nmc_prefix: BOLT
+version: 1
+classifier_keywords: [BOLT, STUD, SCREW, HEXAGON HEAD, HEX HD, CAP SCREW]
+subfamily_attribute: fastener_type
+attributes:
+  - key: fastener_type
+    tier: CRITICAL
+    type: enum
+    values: [HEX_BOLT, STUD_BOLT, CAP_SCREW, SET_SCREW, ANCHOR_BOLT, U_BOLT]
+    comparator: EXACT_ENUM
+  - key: nominal_diameter
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+    variant_axis: true
+  - key: length
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+    variant_axis: true
+  - key: property_class
+    tier: CRITICAL
+    type: enum
+    values: ["4.6", "4.8", "5.6", "5.8", "6.8", "8.8", "9.8", "10.9", "12.9", "A2-50", "A2-70", "A4-70", "A4-80"]
+    comparator: EXACT_ENUM
+  - key: material
+    tier: CRITICAL
+    type: enum
+    comparator: MATERIAL_EQUIV
+  - key: standard
+    tier: MAJOR
+    type: standard
+    comparator: STANDARD_EQUIV
+  - key: coating
+    tier: MAJOR
+    type: enum
+    values: [PLAIN, ZINC_PLATED, HDG, PHOSPHATED, PTFE]
+    comparator: EXACT_ENUM
+  - key: head_type
+    tier: MINOR
+    type: enum
+    comparator: EXACT_ENUM
+identity_required: [fastener_type, nominal_diameter, length, property_class, material]
+description_template: "{fastener_type} M{nominal_diameter}X{length} {material} GR {property_class} {standard} {coating}"
+sap_short_template: "{fastener_type} M{nominal_diameter}X{length} {material} {property_class}"

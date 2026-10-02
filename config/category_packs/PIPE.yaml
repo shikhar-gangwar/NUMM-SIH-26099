@@ -1,0 +1,45 @@
+code: PIPE
+name: Pipes and tubes
+nmc_prefix: PIPE
+version: 1
+classifier_keywords: [PIPE, TUBING, TUBE, SEAMLESS PIPE, ERW PIPE]
+subfamily_attribute: manufacturing
+attributes:
+  - key: material
+    tier: CRITICAL
+    type: enum
+    comparator: MATERIAL_EQUIV
+  - key: spec_grade
+    tier: CRITICAL
+    type: enum
+    values: [A106_GR_B, A53_GR_B, API_5L_X52, SS304, SS316]
+    comparator: EXACT_ENUM
+  - key: nominal_size
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: SIZE_TABLE
+    variant_axis: true
+  - key: schedule_or_thickness
+    tier: CRITICAL
+    type: enum
+    values: [SCH_40, SCH_80, SCH_160, SCH_XS, SCH_XXS]
+    comparator: EXACT_ENUM
+  - key: manufacturing
+    tier: CRITICAL
+    type: enum
+    values: [SEAMLESS, ERW, EFW, WELDED]
+    comparator: EXACT_ENUM
+  - key: end_type
+    tier: MAJOR
+    type: enum
+    values: [BEVELED, PLAIN, THREADED]
+    comparator: EXACT_ENUM
+  - key: standard
+    tier: MAJOR
+    type: standard
+    comparator: STANDARD_EQUIV
+identity_required: [material, spec_grade, nominal_size, schedule_or_thickness, manufacturing]
+description_template: "PIPE {nominal_size} {schedule_or_thickness} {manufacturing} {spec_grade} {standard}"
+sap_short_template: "PIPE {nominal_size} {schedule_or_thickness} {spec_grade}"

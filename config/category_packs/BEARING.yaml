@@ -1,0 +1,50 @@
+code: BEARING
+name: Ball and roller bearings
+nmc_prefix: BRG
+version: 1
+classifier_keywords: [BEARING, DEEP GROOVE, BALL BEARING, ROLLER BEARING]
+subfamily_attribute: bearing_type
+attributes:
+  - key: bearing_type
+    tier: CRITICAL
+    type: enum
+    values: [DEEP_GROOVE_BALL, TAPERED_ROLLER, SPHERICAL_ROLLER, CYLINDRICAL_ROLLER]
+    comparator: EXACT_ENUM
+  - key: designation_base
+    tier: CRITICAL
+    type: string
+    comparator: EXACT_ENUM
+  - key: inner_dia
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+  - key: outer_dia
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+  - key: width
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: NUMERIC_TOL
+    tolerance: {abs: 0.0}
+  - key: seal_type
+    tier: CRITICAL
+    type: enum
+    values: [OPEN, Z, ZZ, RS, 2RS, 2RSR]
+    comparator: EXACT_ENUM
+  - key: clearance
+    tier: MAJOR
+    type: enum
+    values: [CN, C2, C3, C4]
+    comparator: EXACT_ENUM
+identity_required: [bearing_type, designation_base, inner_dia, outer_dia, width, seal_type]
+description_template: "BEARING {designation_base} {seal_type} {clearance} ({inner_dia}x{outer_dia}x{width} mm)"
+sap_short_template: "BRG {designation_base} {seal_type} {clearance}"

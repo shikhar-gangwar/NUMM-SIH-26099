@@ -1,0 +1,16 @@
+units:
+  "NOS": {canonical: EA, dimension: COUNT}
+  "EA": {canonical: EA, dimension: COUNT}
+  "PC": {canonical: EA, dimension: COUNT}
+  "PCS": {canonical: EA, dimension: COUNT}
+  "NO": {canonical: EA, dimension: COUNT}
+  "MTR": {canonical: M, dimension: LENGTH}
+  "M": {canonical: M, dimension: LENGTH}
+  "MM": {canonical: MM, dimension: LENGTH}
+  "KG": {canonical: KG, dimension: MASS}
+  "KGS": {canonical: KG, dimension: MASS}
+  "G": {canonical: G, dimension: MASS}
+  "LTR": {canonical: L, dimension: VOLUME}
+  "L": {canonical: L, dimension: VOLUME}
+  "SET": {canonical: SET, dimension: PACK, pack_size: unknown}
+  "BOX": {canonical: BOX, dimension: PACK, pack_size: unknown}

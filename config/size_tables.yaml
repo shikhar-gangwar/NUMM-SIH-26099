@@ -1,0 +1,25 @@
+pipe_sizes:
+  - nps: "1/2"
+    dn: 15
+    od_mm: 21.3
+  - nps: "3/4"
+    dn: 20
+    od_mm: 26.7
+  - nps: "1"
+    dn: 25
+    od_mm: 33.4
+  - nps: "1-1/2"
+    dn: 40
+    od_mm: 48.3
+  - nps: "2"
+    dn: 50
+    od_mm: 60.3
+  - nps: "3"
+    dn: 80
+    od_mm: 88.9
+  - nps: "4"
+    dn: 100
+    od_mm: 114.3
+  - nps: "6"
+    dn: 150
+    od_mm: 168.3

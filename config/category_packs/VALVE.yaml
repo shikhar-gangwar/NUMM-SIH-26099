@@ -1,0 +1,36 @@
+code: VALVE
+name: Valves and actuators
+nmc_prefix: VLV
+version: 1
+classifier_keywords: [VALVE, GATE VALVE, GLOBE VALVE, CHECK VALVE, BALL VALVE, BUTTERFLY VALVE]
+subfamily_attribute: valve_type
+attributes:
+  - key: valve_type
+    tier: CRITICAL
+    type: enum
+    values: [GATE, GLOBE, CHECK, BALL, BUTTERFLY, PLUG]
+    comparator: EXACT_ENUM
+  - key: nominal_size
+    tier: CRITICAL
+    type: quantity
+    unit_dimension: LENGTH
+    canonical_unit: mm
+    comparator: SIZE_TABLE
+    variant_axis: true
+  - key: pressure_class
+    tier: CRITICAL
+    type: enum
+    values: [150, 300, 600, 900, 1500, 2500]
+    comparator: EXACT_ENUM
+  - key: body_material
+    tier: CRITICAL
+    type: enum
+    comparator: MATERIAL_EQUIV
+  - key: end_connection
+    tier: CRITICAL
+    type: enum
+    values: [FLANGED, THREADED, SOCKET_WELD, BUTT_WELD]
+    comparator: EXACT_ENUM
+identity_required: [valve_type, nominal_size, pressure_class, body_material, end_connection]
+description_template: "VALVE {valve_type} {nominal_size} CLASS {pressure_class} {body_material} {end_connection}"
+sap_short_template: "VLV {valve_type} {nominal_size} CL{pressure_class} {body_material}"
