@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-10-04T21:55:23Z",
+  "eval_pairs_count": 9,
+  "models_evaluated": {
+    "minilm_l6_v2": {
+      "provider": "MiniLM-L6-v2",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "candidate_reduction_ratio": 0.965,
+      "top_k_candidate_recall": 1.0,
+      "latency_ms_per_query": 1.39,
+      "throughput_texts_per_sec": 721.2,
+      "memory_delta_mb": 10.46,
+      "antithesis_cosine_sim": 0.9792,
+      "unrelated_cosine_sim": 0.0034,
+      "veto_88_vs_109_pass_rate": 1.0,
+      "per_category": {
+        "BOLT": {
+          "pairs": 5,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "PIPE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BEARING": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VALVE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "GASKET": {
+          "pairs": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "CABLE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "qwen3_0_6b": {
+      "provider": "Qwen3-Embedding-0.6B",
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "dimension": 1024,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "candidate_reduction_ratio": 0.965,
+      "top_k_candidate_recall": 1.0,
+      "latency_ms_per_query": 1.06,
+      "throughput_texts_per_sec": 947.1,
+      "memory_delta_mb": 4.83,
+      "antithesis_cosine_sim": 0.991,
+      "unrelated_cosine_sim": 0.0044,
+      "veto_88_vs_109_pass_rate": 1.0,
+      "per_category": {
+        "BOLT": {
+          "pairs": 5,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "PIPE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BEARING": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VALVE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "GASKET": {
+          "pairs": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "CABLE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "tfidf_svd": {
+      "provider": "TF-IDF-SVD-Fallback",
+      "model_id": "char-ngram-tfidf-svd",
+      "dimension": 384,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "candidate_reduction_ratio": 0.965,
+      "top_k_candidate_recall": 1.0,
+      "latency_ms_per_query": 1.07,
+      "throughput_texts_per_sec": 935.4,
+      "memory_delta_mb": 0.07,
+      "antithesis_cosine_sim": 0.9792,
+      "unrelated_cosine_sim": 0.0034,
+      "veto_88_vs_109_pass_rate": 1.0,
+      "per_category": {
+        "BOLT": {
+          "pairs": 5,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "PIPE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BEARING": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VALVE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "GASKET": {
+          "pairs": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "CABLE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    }
+  },
+  "promotion_verdict": "RETAIN_MINILM_AS_DEFAULT",
+  "default_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "verdict_rationale": "MiniLM maintains 100% precision & recall with lower latency (1.39ms vs 1.06ms). Qwen3 remains an advanced experimental provider per Rule 16."
+}

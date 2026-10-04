@@ -10,12 +10,17 @@ class Settings(BaseSettings):
     SEED_ADMIN_PASSWORD: str = ""
     CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
     
-    # Provider Settings
+    # Provider Settings (sentence_transformers, qwen3_0_6b, tfidf, fake)
     EMBEDDING_PROVIDER: str = "sentence_transformers"
     EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
     EMBEDDING_DIM: int = 384
     EMBEDDING_BATCH_SIZE: int = 64
     EMBEDDING_DEVICE: str = "cpu"
+    
+    # Qwen v2.x Settings
+    QWEN_EMBEDDING_MODEL: str = "Qwen/Qwen3-Embedding-0.6B"
+    QWEN_EMBEDDING_DIM: int = 1024
+    QWEN_RERANKER_MODEL: str = "Qwen/Qwen3-Reranker-0.6B"
     
     RERANKER_PROVIDER: str = "none"
     RERANKER_MODEL: str = "BAAI/bge-reranker-v2-m3"

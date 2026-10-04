@@ -19,6 +19,7 @@
 - [x] **v1.4: Final Enterprise Landing Page & Showcase Experience** (Completed & Verified: 2026-10-03)
 - [x] **v1.5: Human-Crafted Enterprise UI & Demo Hardening** (Completed & Verified: 2026-10-04)
 - [x] **v1.6: Autonomous Pipeline Audit & UX Hardening** (Completed & Verified: 2026-10-05)
+- [x] **v2.0: Intelligence & Retrieval Upgrade** (Completed & Verified: 2026-10-05)
 
 ---
 

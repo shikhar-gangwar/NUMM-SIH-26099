@@ -136,15 +136,22 @@ def extract_attributes(
             elif "316" in val: val = "SS316"
             attrs.append(ExtractedAttribute(key="material", raw_text=m_mat.group(0), value_text=val, canonical_value=val, rule_id="bolt_material"))
 
-        # Standard (IS 1363, DIN 931, ISO 4014)
-        m_std = re.search(r"\b(IS|DIN|ISO|ASME|ASTM)\s?[:\-]?\s?(\d{3,5})\b", text)
+        # Standard (IS 1363, DIN 931, ISO 4014, ASTM A193, ASME B18.2.1)
+        m_std = re.search(r"\b(IS|DIN|ISO|ASME|ASTM)\s?[:\-]?\s?([A-Z0-9.\-]+)\b", text)
         if m_std:
             std_str = f"{m_std.group(1)} {m_std.group(2)}"
             attrs.append(ExtractedAttribute(key="standard", raw_text=m_std.group(0), value_text=std_str, canonical_value=std_str, rule_id="bolt_standard"))
 
+        # Coating / Finish (GALVANIZED, HDG, ZINC PLATED, BLACK, XYLAN, PTFE)
+        m_coat = re.search(r"\b(HOT DIP GALVANIZED|HOT DIPPED GALVANIZED|HDG|GALVANIZED|GALV|ZINC PLATED|ZINC COATED|BLACK PHOSPHATE|BLACK|XYLAN|TEFLON)\b", text)
+        if m_coat:
+            raw_c = m_coat.group(1)
+            c_val = "HDG" if raw_c in ["HOT DIP GALVANIZED", "HOT DIPPED GALVANIZED", "HDG"] else ("GALVANIZED" if raw_c in ["GALVANIZED", "GALV"] else raw_c.replace(" ", "_"))
+            attrs.append(ExtractedAttribute(key="coating", raw_text=m_coat.group(0), value_text=c_val, canonical_value=c_val, rule_id="bolt_coating"))
+
     elif category_code == "PIPE":
-        # Spec Grade
-        m_spec = re.search(r"\b(A106\s*(?:GR\s*B)?|A53\s*(?:GR\s*B)?|API\s*5L\s*(?:X\d{2})?|SS\s?304|SS\s?316)\b", text)
+        # Spec Grade (A106, A53, A333, API 5L, SS304, SS316)
+        m_spec = re.search(r"\b(A106\s*(?:GR\s*[ABC])?|A53\s*(?:GR\s*[AB])?|A333\s*(?:GR\s*6)?|API\s*5L\s*(?:X\d{2}|GR\s*B)?|SS\s?304L?|SS\s?316L?)\b", text)
         if m_spec:
             val = m_spec.group(1).replace(" ", "_")
             attrs.append(ExtractedAttribute(key="spec_grade", raw_text=m_spec.group(0), value_text=val, canonical_value=val, rule_id="pipe_spec"))
@@ -155,16 +162,23 @@ def extract_attributes(
             sz_str = m_size.group(0)
             attrs.append(ExtractedAttribute(key="nominal_size", raw_text=sz_str, value_text=sz_str, canonical_value=sz_str, rule_id="pipe_size"))
 
-        # Schedule or thickness (SCH 40, SCH 80, SCH 160, SCH XS, SCH XXS)
-        m_sch = re.search(r"\b(SCH(?:EDULE)?\s*(?:40|80|160|XS|XXS|STD))\b", text)
+        # Schedule or thickness (SCH 10, 20, 30, 40, 60, 80, 100, 120, 140, 160, XS, XXS, STD)
+        m_sch = re.search(r"\b(SCH(?:EDULE)?\s*(?:10|20|30|40|60|80|100|120|140|160|XS|XXS|STD))\b", text)
         if m_sch:
             sch_val = m_sch.group(1).replace("SCHEDULE", "SCH")
             attrs.append(ExtractedAttribute(key="schedule_or_thickness", raw_text=m_sch.group(0), value_text=sch_val, canonical_value=sch_val, rule_id="pipe_sch"))
 
-        # Manufacturing (SEAMLESS, ERW, EFW, WELDED)
-        m_mfg = re.search(r"\b(SEAMLESS|ERW|EFW|WELDED)\b", text)
+        # Manufacturing (SEAMLESS, ERW, EFW, WELDED, SAW, LSAW)
+        m_mfg = re.search(r"\b(SEAMLESS|ERW|EFW|WELDED|SAW|LSAW)\b", text)
         if m_mfg:
             attrs.append(ExtractedAttribute(key="manufacturing", raw_text=m_mfg.group(1), value_text=m_mfg.group(1), canonical_value=m_mfg.group(1), rule_id="pipe_mfg"))
+
+        # End finish (BEVELED, PLAIN END, THREADED)
+        m_end_p = re.search(r"\b(BEVELED END|BEVELLED END|PLAIN END|THREADED END|BE|PE|TE)\b", text)
+        if m_end_p:
+            raw_e = m_end_p.group(1)
+            e_val = "BEVELED" if raw_e in ["BEVELED END", "BEVELLED END", "BE"] else ("PLAIN" if raw_e in ["PLAIN END", "PE"] else "THREADED")
+            attrs.append(ExtractedAttribute(key="end_finish", raw_text=m_end_p.group(0), value_text=e_val, canonical_value=e_val, rule_id="pipe_end_finish"))
 
         # Material (Carbon Steel vs Stainless Steel)
         m_mat = re.search(r"\b(STAINLESS STEEL|CARBON STEEL|ALLOY STEEL|SS\s?304|SS\s?316|SS304|SS316|CS|MS)\b", text)
@@ -190,20 +204,35 @@ def extract_attributes(
         else:
             attrs.append(ExtractedAttribute(key="seal_type", raw_text="OPEN", value_text="OPEN", canonical_value="OPEN", assumed=True, rule_id="brg_seal_default"))
 
-        # Clearance (C2, C3, C4, CN)
-        m_clr = re.search(r"\b(C[234]|CN)\b", text)
+        # Clearance (C1, C2, C3, C4, C5, CN)
+        m_clr = re.search(r"\b(C[12345]|CN)\b", text)
         if m_clr:
             attrs.append(ExtractedAttribute(key="clearance", raw_text=m_clr.group(1), value_text=m_clr.group(1), canonical_value=m_clr.group(1), rule_id="brg_clearance"))
 
+        # Cage material (BRASS, STEEL, POLYAMIDE)
+        m_cage = re.search(r"\b(BRASS CAGE|STEEL CAGE|POLYAMIDE CAGE|BRASS|STEEL)\b", text)
+        if m_cage and "BEARING" in text:
+            raw_c = m_cage.group(1).replace(" CAGE", "")
+            attrs.append(ExtractedAttribute(key="cage_material", raw_text=m_cage.group(0), value_text=raw_c, canonical_value=raw_c, rule_id="brg_cage"))
+
         # Standard ISO bearing dimensions lookup table
         BEARING_DIMENSIONS = {
+            "6004": (20.0, 42.0, 12.0),
+            "6005": (25.0, 47.0, 12.0),
+            "6006": (30.0, 55.0, 13.0),
+            "6200": (10.0, 30.0, 9.0),
+            "6201": (12.0, 32.0, 10.0),
+            "6202": (15.0, 35.0, 11.0),
+            "6203": (17.0, 40.0, 12.0),
             "6204": (20.0, 47.0, 14.0),
             "6205": (25.0, 52.0, 15.0),
             "6206": (30.0, 62.0, 16.0),
             "6207": (35.0, 72.0, 17.0),
             "6208": (40.0, 80.0, 18.0),
+            "6304": (20.0, 52.0, 15.0),
             "6305": (25.0, 62.0, 17.0),
             "6306": (30.0, 72.0, 19.0),
+            "6307": (35.0, 80.0, 21.0),
             "6308": (40.0, 90.0, 23.0),
             "6309": (45.0, 100.0, 25.0),
             "6310": (50.0, 110.0, 27.0),
@@ -217,8 +246,8 @@ def extract_attributes(
             attrs.append(ExtractedAttribute(key="width", raw_text=str(w_val), value_num=w_val, unit="mm", canonical_value=f"{w_val}mm", rule_id="brg_iso_table"))
 
     elif category_code == "VALVE":
-        # Valve type (GATE, GLOBE, CHECK, BALL, BUTTERFLY, PLUG)
-        m_vtype = re.search(r"\b(GATE|GLOBE|CHECK|BALL|BUTTERFLY|PLUG)\s*(?:VALVE)?\b", text)
+        # Valve type (GATE, GLOBE, CHECK, BALL, BUTTERFLY, PLUG, NEEDLE)
+        m_vtype = re.search(r"\b(GATE|GLOBE|CHECK|BALL|BUTTERFLY|PLUG|NEEDLE)\s*(?:VALVE)?\b", text)
         if m_vtype:
             attrs.append(ExtractedAttribute(key="valve_type", raw_text=m_vtype.group(1), value_text=m_vtype.group(1), canonical_value=m_vtype.group(1), rule_id="vlv_type"))
 
@@ -227,21 +256,27 @@ def extract_attributes(
         if m_vsize:
             attrs.append(ExtractedAttribute(key="nominal_size", raw_text=m_vsize.group(0), value_text=m_vsize.group(0), canonical_value=m_vsize.group(0), rule_id="vlv_size"))
 
-        # Pressure class (150, 300, 600, 900, 1500, 2500)
-        m_cls = re.search(r"\b(?:CLASS|CL|PN)?\s*(150|300|600|900|1500|2500|16|40)\b", text)
+        # Pressure class (150, 300, 600, 800, 900, 1500, 2500, PN16, PN40)
+        m_cls = re.search(r"\b(?:CLASS|CL|PN)?\s*(150|300|600|800|900|1500|2500|16|25|40)\b", text)
         if m_cls:
             c_raw = m_cls.group(1)
             # Map PN16 -> 150, PN40 -> 300 if standard
-            c_val = "150" if c_raw == "16" else ("300" if c_raw == "40" else c_raw)
+            c_val = "150" if c_raw in ["16", "25"] else ("300" if c_raw == "40" else c_raw)
             attrs.append(ExtractedAttribute(key="pressure_class", raw_text=c_raw, value_text=c_val, canonical_value=c_val, rule_id="vlv_class"))
 
-        # Body Material
-        m_bmat = re.search(r"\b(WCB|CF8M|CF8|SS316|SS304|CAST IRON|CARBON STEEL|FORGED STEEL|A105|A216|A351)\b", text)
+        # Body Material (WCB, WCC, LCB, CF8M, CF8, CF3M, SS316, SS304, CAST IRON, CARBON STEEL, FORGED STEEL, A105, A216, A351)
+        m_bmat = re.search(r"\b(WCB|WCC|LCB|LCC|CF8M|CF8|CF3M|CF3|SS316|SS304|CAST IRON|CARBON STEEL|FORGED STEEL|A105|A216|A351|F316|F304)\b", text)
         if m_bmat:
             val = m_bmat.group(1)
             attrs.append(ExtractedAttribute(key="body_material", raw_text=val, value_text=val, canonical_value=val, rule_id="vlv_bmat"))
         elif m_vtype:
             attrs.append(ExtractedAttribute(key="body_material", raw_text="WCB", value_text="WCB", canonical_value="WCB", assumed=True, rule_id="vlv_bmat_default"))
+
+        # Trim material (TRIM 1, TRIM 5, TRIM 8, 13CR, SS316, STELLITE)
+        m_trim = re.search(r"\b(TRIM\s*(?:1|5|8|10|12)|STELLITE|13CR|13\s*%?\s*CR|SS316\s*TRIM)\b", text)
+        if m_trim:
+            val_t = m_trim.group(1).replace(" ", "_")
+            attrs.append(ExtractedAttribute(key="trim_material", raw_text=m_trim.group(0), value_text=val_t, canonical_value=val_t, rule_id="vlv_trim"))
 
         # End connection (FLANGED, THREADED, SOCKET_WELD, BUTT_WELD)
         m_end = re.search(r"\b(FLANGED|THREADED|SOCKET WELD|BUTT WELD)\b", text)
@@ -262,15 +297,22 @@ def extract_attributes(
         if m_gsize:
             attrs.append(ExtractedAttribute(key="nominal_size", raw_text=m_gsize.group(0), value_text=m_gsize.group(0), canonical_value=m_gsize.group(0), rule_id="gskt_size"))
 
-        # Pressure class (150, 300, 600, 900, 1500)
-        m_cls = re.search(r"\b(?:CLASS|CL|PN)?\s*(150|300|600|900|1500|16|20|40)\b", text)
+        # Pressure class (150, 300, 600, 900, 1500, 2500)
+        m_cls = re.search(r"\b(?:CLASS|CL|PN)?\s*(150|300|600|900|1500|2500|16|20|40)\b", text)
         if m_cls:
             c_raw = m_cls.group(1)
             c_val = "150" if c_raw in ["16", "20"] else ("300" if c_raw == "40" else c_raw)
             attrs.append(ExtractedAttribute(key="pressure_class", raw_text=c_raw, value_text=c_val, canonical_value=c_val, rule_id="gskt_class"))
 
-        # Material
-        m_gmat = re.search(r"\b(SS316|SS304|GRAPHITE|PTFE|CAF|EPDM|NEOPRENE)\b", text)
+        # Ring Construction (CGI, CG, RIR, R, INNER & OUTER RING)
+        m_ring = re.search(r"\b(INNER & OUTER RING|OUTER RING ONLY|INNER RING ONLY|CGI|CG|RIR|STYLE CGI|STYLE CG)\b", text)
+        if m_ring:
+            raw_r = m_ring.group(1)
+            r_val = "CGI" if ("INNER & OUTER" in raw_r or "CGI" in raw_r) else ("CG" if ("OUTER RING" in raw_r or "CG" in raw_r) else "RIR")
+            attrs.append(ExtractedAttribute(key="ring_construction", raw_text=m_ring.group(0), value_text=r_val, canonical_value=r_val, rule_id="gskt_ring"))
+
+        # Material (SS316, SS304, GRAPHITE, PTFE, CAF, EPDM, NEOPRENE)
+        m_gmat = re.search(r"\b(SS316|SS304|GRAPHITE|PTFE|CAF|CNAF|EPDM|NEOPRENE)\b", text)
         if m_gmat:
             attrs.append(ExtractedAttribute(key="material", raw_text=m_gmat.group(1), value_text=m_gmat.group(1), canonical_value=m_gmat.group(1), rule_id="gskt_mat"))
         elif m_gtype and "SPIRAL" in m_gtype.group(0):
@@ -284,11 +326,11 @@ def extract_attributes(
             val = "COPPER" if raw in ["COPPER", "CU"] else "ALUMINIUM"
             attrs.append(ExtractedAttribute(key="conductor_material", raw_text=raw, value_text=val, canonical_value=val, rule_id="cbl_conductor"))
 
-        # Voltage grade (1.1KV, 3.3KV, 6.6KV, 11KV, 33KV)
-        m_volt = re.search(r"\b(1\.1\s*KV|3\.3\s*KV|6\.6\s*KV|11\s*KV|33\s*KV|1100\s*V)\b", text)
+        # Voltage grade (1.1KV, 3.3KV, 6.6KV, 11KV, 22KV, 33KV, 650/1100V, 1100V)
+        m_volt = re.search(r"\b(1\.1\s*KV|3\.3\s*KV|6\.6\s*KV|11\s*KV|22\s*KV|33\s*KV|650/1100\s*V|1100\s*V)\b", text)
         if m_volt:
             val = m_volt.group(1).replace(" ", "")
-            if val == "1100V": val = "1.1KV"
+            if val in ["1100V", "650/1100V"]: val = "1.1KV"
             attrs.append(ExtractedAttribute(key="voltage_grade", raw_text=m_volt.group(0), value_text=val, canonical_value=val, rule_id="cbl_voltage"))
 
         # Cores & Cross section (e.g. 3.5C X 95 SQMM, 4C X 16 SQMM)
@@ -299,8 +341,8 @@ def extract_attributes(
             attrs.append(ExtractedAttribute(key="cores", raw_text=m_core.group("c"), value_num=c_val, canonical_value=str(m_core.group('c')), rule_id="cbl_cores"))
             attrs.append(ExtractedAttribute(key="cross_section", raw_text=m_core.group("s"), value_num=s_val, unit="mm2", canonical_value=f"{s_val}mm2", rule_id="cbl_sqmm"))
 
-        # Insulation (PVC, XLPE)
-        m_ins = re.search(r"\b(PVC|XLPE)\b", text)
+        # Insulation (PVC, XLPE, EPR)
+        m_ins = re.search(r"\b(PVC|XLPE|EPR)\b", text)
         if m_ins:
             attrs.append(ExtractedAttribute(key="insulation", raw_text=m_ins.group(1), value_text=m_ins.group(1), canonical_value=m_ins.group(1), rule_id="cbl_insulation"))
 
@@ -308,5 +350,10 @@ def extract_attributes(
         m_arm = re.search(r"\b(UNARMOURED|ARMOURED)\b", text)
         if m_arm:
             attrs.append(ExtractedAttribute(key="armoured", raw_text=m_arm.group(1), value_text=m_arm.group(1), canonical_value=m_arm.group(1), rule_id="cbl_armoured"))
+
+        # Flame retardant / Low smoke (FRLS, LSZH, FR)
+        m_fr = re.search(r"\b(FRLS|LSZH|FR)\b", text)
+        if m_fr:
+            attrs.append(ExtractedAttribute(key="flame_rating", raw_text=m_fr.group(1), value_text=m_fr.group(1), canonical_value=m_fr.group(1), rule_id="cbl_frls"))
 
     return attrs

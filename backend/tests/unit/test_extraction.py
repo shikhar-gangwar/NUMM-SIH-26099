@@ -56,3 +56,36 @@ def test_cable_attribute_extraction():
     assert attr_dict["voltage_grade"].value_text == "1.1KV"
     assert "insulation" in attr_dict
     assert attr_dict["insulation"].value_text == "XLPE"
+
+def test_v2_expanded_attribute_extraction():
+    # Bolt coating & standard
+    bolt_attrs = {a.key: a for a in extract_attributes("HEX HEAD BOLT M16 X 70 8.8 HDG ASTM A193", "BOLT")}
+    assert bolt_attrs["coating"].value_text == "HDG"
+    assert bolt_attrs["coating"].rule_id == "bolt_coating"
+    assert "ASTM A193" in bolt_attrs["standard"].value_text
+
+    # Pipe end finish
+    pipe_attrs = {a.key: a for a in extract_attributes("PIPE 6 INCH SCH 80 SEAMLESS BEVELED END A106 GR B", "PIPE")}
+    assert pipe_attrs["end_finish"].value_text == "BEVELED"
+    assert pipe_attrs["end_finish"].rule_id == "pipe_end_finish"
+
+    # Bearing cage material
+    brg_attrs = {a.key: a for a in extract_attributes("BEARING 6308 2RS C3 BRASS CAGE", "BEARING")}
+    assert brg_attrs["cage_material"].value_text == "BRASS"
+    assert brg_attrs["cage_material"].rule_id == "brg_cage"
+
+    # Valve trim
+    vlv_attrs = {a.key: a for a in extract_attributes("GLOBE VALVE 3 INCH CLASS 300 FLANGED WCB TRIM 8", "VALVE")}
+    assert vlv_attrs["trim_material"].value_text == "TRIM_8"
+    assert vlv_attrs["trim_material"].rule_id == "vlv_trim"
+
+    # Gasket ring construction
+    gskt_attrs = {a.key: a for a in extract_attributes("SPIRAL WOUND GASKET 2 INCH 150# CGI SS316 GRAPHITE", "GASKET")}
+    assert gskt_attrs["ring_construction"].value_text == "CGI"
+    assert gskt_attrs["ring_construction"].rule_id == "gskt_ring"
+
+    # Cable flame rating
+    cbl_attrs = {a.key: a for a in extract_attributes("CABLE 3.5C X 95 SQMM AL XLPE 1.1KV ARMOURED FRLS", "CABLE")}
+    assert cbl_attrs["flame_rating"].value_text == "FRLS"
+    assert cbl_attrs["flame_rating"].rule_id == "cbl_frls"
+
