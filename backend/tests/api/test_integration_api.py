@@ -45,3 +45,22 @@ def test_mock_sap_integration_flow(client, auth_headers, db_session):
         assert len(item["product_description"]) <= 40, f"Exceeded 40 chars: {item['product_description']}"
         assert "MATNR" in item["payload"]["HEADER"]
         assert item["payload"]["IS_MOCK"] is True
+
+def test_saps4_adapter_contract():
+    from app.integration.sap import SAPS4Adapter
+    adapter = SAPS4Adapter()
+    health = adapter.health_check()
+    assert health["adapter"] == "SAP_S4HANA_ODATA_V2"
+    assert health["is_mock"] is False
+    assert health["status"] == "UNCONFIGURED_CREDENTIALS_REQUIRED"
+
+    payload = adapter.transform_nmc_to_product_payload(
+        nmc="NMC-BOLT-00000042-X",
+        canonical_desc="HEX BOLT M12 X 60 GRADE 8.8 GALVANIZED FINISH WITH ISO 4014 SPECIFICATION",
+        uom="EA",
+        category="BOLT"
+    )
+    assert payload["Product"] == "NMCBOLT00000042X"
+    assert len(payload["to_Description"][0]["ProductDescription"]) <= 40
+    assert payload["ProductGroup"] == "BOLT"
+

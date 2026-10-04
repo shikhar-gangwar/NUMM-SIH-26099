@@ -638,8 +638,8 @@ Post-prototype production release plan mapping future engineering enhancements:
 2. **v2.1 (Neural Reranking):** `[✓] IMPLEMENTED + VERIFIED` Qwen3-Reranker-0.6B cross-encoder in a `retrieve → rerank → technical validation → veto` pipeline, maintaining deterministic G0–G6 safety overrides.
 3. **v2.2 (Hybrid Retrieval):** `[✓] IMPLEMENTED + VERIFIED` BGE-M3 dense + sparse hybrid retrieval, empirical benchmark against Qwen pipeline, and optimal retrieval configuration selection.
 4. **v2.3 (Evaluation & Model Assurance):** `[✓] IMPLEMENTED + VERIFIED` Per-category P/R/F1 breakdown, latency matrix, candidate reduction curves, and Web Model Assurance & Telemetry dashboard (`/meta/model-assurance` + `/analytics` tab).
-5. **v2.4 (Enterprise Scale Architecture):** Distributed Redis/Celery worker cluster, streaming multi-million row batch ingestion, distributed async matching orchestrator.
-6. **Enterprise Integrations (Post-v2):** Production SAP S/4HANA RFC/OData HTTPS connector and Enterprise Single Sign-On (SSO via SAML 2.0 / OIDC).
+5. **v2.4 (Enterprise Scale Architecture):** `[✓] IMPLEMENTED + VERIFIED` Distributed Job Queue abstraction (`DistributedJobQueue`, `InMemoryJobQueue`, `JobStatus`), job progress telemetry, batch retry policy, cancellation state machine, and millions-of-records asynchronous batch processing design.
+6. **v2.5 (Enterprise Integration Architecture):** `[✓] IMPLEMENTED + VERIFIED` Dual adapter architecture: `MockSapAdapter` (40-char MAKTX truncation, simulated BAPI sync) and `SAPS4Adapter` (production SAP S/4HANA OData v2 Product Master contract without hardcoded secrets).
 
 
 

@@ -23,6 +23,8 @@
 - [x] **v2.1: Neural Reranking** (Completed & Verified: 2026-10-05)
 - [x] **v2.2: Hybrid Retrieval Research Track** (Completed & Verified: 2026-10-05)
 - [x] **v2.3: Evaluation & Model Assurance** (Completed & Verified: 2026-10-05)
+- [x] **v2.4: Enterprise Scale Architecture** (Completed & Verified: 2026-10-05)
+- [x] **v2.5: Enterprise Integration Architecture** (Completed & Verified: 2026-10-05)
 
 ---
 

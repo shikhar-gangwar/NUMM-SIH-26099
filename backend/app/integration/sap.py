@@ -249,3 +249,61 @@ class MockSapAdapter:
                 "created_at": r.created_at.isoformat() if r.created_at else None
             } for r in rows
         ]
+
+class SAPS4Adapter:
+    """
+    Production SAP S/4HANA OData / RFC Outbound Material Master Interface Contract.
+    Conforms to SAP Material Master API (API_PRODUCT_SRV / ProductMaster).
+    
+    SECURITY INVARIANT (Rule 17):
+    Real RFC/OData credentials remain external in environment secrets (e.g. SAP_HOST, SAP_API_KEY).
+    No credentials are ever committed or mocked with fake production status.
+    """
+    ADAPTER_NAME = "SAP_S4HANA_ODATA_V2"
+    SAP_MAX_MAKTX_LEN = 40
+
+    def __init__(
+        self,
+        base_url: Optional[str] = None,
+        client: str = "100",
+        auth_type: str = "OAUTH2"
+    ):
+        self.base_url = base_url
+        self.client = client
+        self.auth_type = auth_type
+
+    def transform_nmc_to_product_payload(
+        self,
+        nmc: str,
+        canonical_desc: str,
+        uom: str,
+        category: str
+    ) -> Dict[str, Any]:
+        """
+        Transforms NUMM canonical master data into SAP S/4HANA Product Master JSON schema.
+        Enforces 40-character MAKTX truncation.
+        """
+        short_desc = canonical_desc[:self.SAP_MAX_MAKTX_LEN] if len(canonical_desc) > self.SAP_MAX_MAKTX_LEN else canonical_desc
+        return {
+            "Product": nmc.replace("-", "")[:18],
+            "ProductType": "ROH" if category in ["PIPE", "BOLT"] else "ERSA",
+            "BaseUnit": uom if uom else "EA",
+            "to_Description": [
+                {
+                    "Language": "EN",
+                    "ProductDescription": short_desc
+                }
+            ],
+            "ProductGroup": category,
+            "IndustrySector": "M"  # Mechanical Engineering
+        }
+
+    def health_check(self) -> Dict[str, Any]:
+        return {
+            "adapter": self.ADAPTER_NAME,
+            "is_mock": False,
+            "configured": bool(self.base_url),
+            "auth_type": self.auth_type,
+            "status": "UNCONFIGURED_CREDENTIALS_REQUIRED" if not self.base_url else "CONFIGURED"
+        }
+
