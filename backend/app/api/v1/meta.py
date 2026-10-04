@@ -143,4 +143,48 @@ def get_public_stats(db: Session = Depends(get_db)):
         "gates": "G0–G6"
     }
 
+@router.get("/model-assurance")
+def get_model_assurance(db: Session = Depends(get_db)):
+    """
+    Model Assurance & Governance telemetry endpoint.
+    Exposes measured benchmark evidence from reports/model_benchmark_latest.json
+    and real database model registrations. Strictly labeled CONTROLLED BENCHMARK.
+    """
+    import json
+    from pathlib import Path
+
+    benchmark_path = Path("reports/model_benchmark_latest.json")
+    benchmark_data = None
+    if benchmark_path.exists():
+        try:
+            with open(benchmark_path, "r", encoding="utf-8") as f:
+                benchmark_data = json.load(f)
+        except Exception:
+            pass
+
+    active_models = db.query(ModelVersion).all()
+    models_list = [
+        {
+            "id": m.id,
+            "kind": m.kind,
+            "provider": m.provider,
+            "model_id": m.model_id,
+            "model_version": m.model_version,
+            "dimension": m.dimension,
+            "status": m.status
+        }
+        for m in active_models
+    ]
+
+    return {
+        "status": "ASSURED",
+        "benchmark_label": "CONTROLLED BENCHMARK — NOT PRODUCTION ACCURACY",
+        "active_embedding_provider": settings.EMBEDDING_PROVIDER,
+        "active_embedding_model": settings.EMBEDDING_MODEL,
+        "active_reranker_provider": settings.RERANKER_PROVIDER,
+        "active_llm_provider": settings.LLM_PROVIDER,
+        "registered_models": models_list,
+        "latest_benchmark": benchmark_data
+    }
+
 

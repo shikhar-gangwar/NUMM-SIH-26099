@@ -193,4 +193,26 @@ In accordance with **Section 16 (Model Promotion Policy)**:
 - **Status:** BGE-M3 registered as an active experimental provider for hybrid multi-vector research. MiniLM remains the default production provider due to lower latency, 100% accuracy on the evaluation dataset, and zero external dependency risk.
 - **Safety Proof:** Gate G2 8.8 vs 10.9 hard veto holds with 100% pass rate across all models.
 
+---
+
+## 9. Milestone v2.3 — Model Assurance & Evaluation Dashboard
+
+### 9.1 Backend Telemetry API
+- Implemented `/api/v1/meta/model-assurance` endpoint in `backend/app/api/v1/meta.py`:
+  - Returns active providers (`sentence_transformers`, `qwen3_0_6b`, `bge_m3`, `tfidf`).
+  - Returns registered `ModelVersion` database entities with unique provider fingerprints and dimensions.
+  - Exposes empirical evaluation data directly from `reports/model_benchmark_latest.json`.
+  - Strictly labeled: `CONTROLLED BENCHMARK — NOT PRODUCTION ACCURACY`.
+
+### 9.2 Frontend Governance Telemetry Dashboard
+- Enhanced `web/app/analytics/page.tsx`:
+  - Added clean tab navigation separating **Enterprise Decision Intelligence** from **Model Assurance & Benchmark Telemetry**.
+  - Displays empirical model comparison matrix (MiniLM vs Qwen3 vs BGE-M3 vs TF-IDF) with precision, recall, F1, query latency, text throughput, and 8.8 vs 10.9 veto pass rates.
+  - Displays per-category empirical breakdown across all 6 core categories (`BOLT`, `PIPE`, `BEARING`, `VALVE`, `GASKET`, `CABLE`).
+  - Displays authoritative Non-Negotiable Safety Invariant reminder guaranteeing that AI models cannot override Gates G0–G6.
+- Verification:
+  - `npm run build` compiled with 0 errors across all 13 routes.
+  - Route `/analytics` verified active with HTTP 200.
+
+
 

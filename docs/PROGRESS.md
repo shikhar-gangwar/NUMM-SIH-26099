@@ -22,6 +22,7 @@
 - [x] **v2.0: Intelligence & Retrieval Upgrade** (Completed & Verified: 2026-10-05)
 - [x] **v2.1: Neural Reranking** (Completed & Verified: 2026-10-05)
 - [x] **v2.2: Hybrid Retrieval Research Track** (Completed & Verified: 2026-10-05)
+- [x] **v2.3: Evaluation & Model Assurance** (Completed & Verified: 2026-10-05)
 
 ---
 
