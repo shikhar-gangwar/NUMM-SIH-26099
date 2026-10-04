@@ -32,13 +32,13 @@ The coding agent is a **build-time tool only**. It is never part of the running 
 
 ### 2.1 Runtime Components Matrix
 
-| Role | P0 Default | P1 Upgrade | Fallback (Always Available) | Status |
+| Role | P0 Default | P1 / v2.x Upgrade | Fallback (Always Available) | Status |
 |---|---|---|---|---|
-| Deterministic parsing | Regex + unit registry + abbreviation dictionaries (`abbreviations.yaml`) | `standard_equivalence.yaml` growth | In-process regex parser | `[✓] IMPLEMENTED + VERIFIED` (v0.3) |
-| Lexical similarity | RapidFuzz (token-set / WRatio) + char n-gram TF-IDF (`scikit-learn`) | PostgreSQL `pg_trgm` | RapidFuzz token-set ratio | `[✓] IMPLEMENTED + VERIFIED` (v0.4) |
-| Embedding generation | `sentence-transformers/all-MiniLM-L6-v2` (384-d) | `BAAI/bge-m3` | `TfidfEmbedding` char-ngram SVD vectors | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
-| Candidate retrieval & vector storage | PostgreSQL + `pgvector` HNSW index (`idx_material_embedding_hnsw`) | `halfvec` index | Category exact key blocking | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
-| Reranker | Off in P0 | `BAAI/bge-reranker-v2-m3` cross-encoder | First-stage HNSW order | `[ ] PLANNED` (P1) |
+| Deterministic parsing | Regex + unit registry + abbreviation dictionaries (`abbreviations.yaml`) | `standard_equivalence.yaml` growth + enriched multi-standard extraction (v2.0) | In-process regex parser | `[✓] IMPLEMENTED + VERIFIED` (v0.3) |
+| Lexical similarity | RapidFuzz (token-set / WRatio) + char n-gram TF-IDF (`scikit-learn`) | PostgreSQL `pg_trgm` + BGE-M3 sparse lexical weights (v2.2) | RapidFuzz token-set ratio | `[✓] IMPLEMENTED + VERIFIED` (v0.4) |
+| Embedding generation | `sentence-transformers/all-MiniLM-L6-v2` (384-d) | `Qwen/Qwen3-Embedding-0.6B` (v2.0) / `BAAI/bge-m3` (v2.2) | `TfidfEmbedding` char-ngram SVD vectors | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
+| Candidate retrieval & vector storage | PostgreSQL + `pgvector` HNSW index (`idx_material_embedding_hnsw`) | `halfvec` index / hybrid dense-sparse retrieval (v2.2) | Category exact key blocking | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
+| Neural Reranker | Off in P0 | `Qwen/Qwen3-Reranker-0.6B` (v2.1) cross-encoder | First-stage HNSW order | `[ ] PLANNED` (v2.1) |
 | LLM explanation / extraction assist | Off in P0 (`LLM_PROVIDER=none`); deterministic evidence templates | Ollama local / Anthropic Cloud | Rule-based extraction & templated evidence | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
 | Category classifier | Rule-based keyword matching (`extract_attributes`) | Embedding-kNN | Keyword rules (`detect_category`) | `[✓] IMPLEMENTED + VERIFIED` (v0.3) |
 | Veto lattice & safety gates | Gates G0–G6 enforcing 8.8 vs 10.9 & UNKNOWN missing grade gates | Rules expansion | Hard-coded gate logic | `[✓] IMPLEMENTED + VERIFIED` (v0.4) |
@@ -58,9 +58,10 @@ All AI capabilities sit behind provider interfaces in `backend/app/ai/providers/
 - `[✓] IMPLEMENTED + VERIFIED` `NoneLLM` provider — Implemented in v0.2.
 - `[✓] IMPLEMENTED + VERIFIED` `FakeLLM` test double — Implemented in v0.2.
 - `[✓] IMPLEMENTED + VERIFIED` `register_provider_fingerprint` — Persists `ModelVersion` records on startup.
-- `[ ] PLANNED` `BgeM3Embedding` (P1 upgrade).
-- `[ ] PLANNED` `CrossEncoderReranker` (P1 upgrade).
-- `[ ] PLANNED` `OllamaLLM` & `AnthropicLLM` (P1 upgrade).
+- `[ ] PLANNED` `Qwen3EmbeddingProvider` (`Qwen/Qwen3-Embedding-0.6B`, 1024-d) — High-capacity dense embeddings for industrial and multilingual technical vocabulary (v2.0 upgrade).
+- `[ ] PLANNED` `Qwen3RerankerProvider` (`Qwen/Qwen3-Reranker-0.6B`) — Cross-encoder neural reranker for top candidate precision ordering (v2.1 upgrade).
+- `[ ] PLANNED` `BgeM3HybridProvider` (`BAAI/bge-m3`) — Multi-functional dense + sparse lexical retrieval engine (v2.2 upgrade).
+- `[ ] PLANNED` `OllamaLLM` & `AnthropicLLM` — Auxiliary explanation & attribute extraction assistant (v2.x upgrade).
 
 ---
 
@@ -88,6 +89,11 @@ All AI capabilities sit behind provider interfaces in `backend/app/ai/providers/
 | **v1.4** | Final Enterprise Landing Page & Showcase Experience | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-03 | Authoritative root landing page ("/"), multi-CPSE resolution visual, 8.8 vs 10.9 safety hero, 7-stage lifecycle, 3-pillar governance, 54/54 pytests PASS, 100% web routes |
 | **v1.5** | Final Dark Mode & Global Visual Consistency Fix | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-04 | CSS token architecture, zero dark mode white bleed, Monkeytype/LeetCode black+gold theme, high-contrast KPI cards, 54/54 pytests PASS, 100% web routes |
 | **v1.6** | Final NUMM Hardening + Real Public Dataset + UI Polish | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-04 | 21,513 Hugging Face CPSE records, 22,496 DB total, 30 golden review scenarios, enriched P0 attribute extraction, minimalist industrial SVG illustrations, epoch date fix, 54/54 pytests PASS, 100% web routes |
+| **v2.0** | Intelligence & Retrieval Upgrade | `[ ] PLANNED` | Q1 2027 | Qwen3-Embedding-0.6B, benchmark against MiniLM baseline, improved attribute extraction across standards, higher-resolution candidate retrieval |
+| **v2.1** | Neural Reranking | `[ ] PLANNED` | Q1 2027 | Qwen3-Reranker-0.6B cross-encoder, 2-stage retrieve → rerank → technical attribute validation → G0–G6 veto lattice pipeline |
+| **v2.2** | Hybrid Retrieval | `[ ] PLANNED` | Q2 2027 | BGE-M3 dense + sparse retrieval, empirical benchmark against Qwen pipeline, data-driven optimal retrieval configuration |
+| **v2.3** | Evaluation & Model Assurance | `[ ] PLANNED` | Q2 2027 | Per-category Precision / Recall / F1, confusion matrix, P99 latency tracking, candidate reduction metrics, web model assurance dashboard |
+| **v2.4** | Enterprise Scale & Multi-Tenant Pipeline | `[ ] PLANNED` | Q2 2027 | Redis/Celery worker cluster, streaming multi-million row batch ingestion, distributed async matching orchestrator |
 
 ---
 
@@ -528,7 +534,76 @@ All AI capabilities sit behind provider interfaces in `backend/app/ai/providers/
   - `[✓] DONE` Production Compilation: `npm run build` compiled 13/13 static & dynamic routes with 0 TypeScript/lint errors; web container recreated and verified.
   - `[✓] DONE` Crosswalk CSV Export: Verified streaming CSV output at `/api/v1/exports/crosswalk.csv` containing 12 active multi-CPSE mappings across 4 NMCs.
   - `[ ] PLANNED` Real-world production SAP S/4HANA RFC/OData HTTPS connector (P1 upgrade).
-  - `[ ] PLANNED` Cross-encoder neural reranker integration (P1 upgrade).
+
+#### Version v2.0 — Intelligence & Retrieval Upgrade
+- **Status:** `[ ] PLANNED`
+- **Target Horizon:** Q1 2027
+- **Core Directive:** Elevate semantic resolution and candidate blocking precision by adopting `Qwen/Qwen3-Embedding-0.6B` and enriching multi-standard attribute extraction rules.
+- **Detailed Engineering Roadmap:**
+  - `[ ] PLANNED` **Qwen3-Embedding-0.6B Integration:** Implement `Qwen3EmbeddingProvider` behind the existing `EmbeddingProvider` interface in `backend/app/ai/providers/base.py`, leveraging 1024-dimensional dense vectors fine-tuned for high technical and multilingual semantic separation.
+  - `[ ] PLANNED` **Benchmark Against MiniLM Baseline:** Build an empirical benchmarking harness (`scripts/benchmark_embeddings.py`) comparing `all-MiniLM-L6-v2` vs `Qwen3-Embedding-0.6B` across:
+    - Candidate retrieval recall@k (k=10, 25, 50) on ground-truth duplicate pairs (`ground_truth_pairs.json`).
+    - Cosine separation between critical engineering antithesis pairs (e.g., 8.8 vs 10.9, 150# vs 300#).
+    - Inference latency per 1,000 descriptions on CPU and GPU.
+    - Vector index footprint in PostgreSQL `pgvector`.
+  - `[ ] PLANNED` **Improved Attribute Extraction:** Expand regex and dictionary extraction patterns across all 6 categories:
+    - Multi-standard mappings: ASTM (A193, A325, A490), ASME (B16.5, B16.9, B16.47), DIN (933, 931, 912), IS (1363, 1364).
+    - Expanded pressure classes: Class 150, 300, 600, 900, 1500, 2500 and metric equivalents (PN10, PN16, PN25, PN40, PN64, PN100).
+    - Cable core/insulation extraction (XLPE, PVC, FRLS, Armoured vs Unarmoured).
+  - `[ ] PLANNED` **Better Candidate Retrieval:** Calibrate pgvector HNSW index parameters (`m=16`, `ef_construction=64`, `ef_search=40`) and dynamic distance thresholding to maximize recall of true functional equivalents while pruning unrelated candidates by >98%.
+
+#### Version v2.1 — Neural Reranking
+- **Status:** `[ ] PLANNED`
+- **Target Horizon:** Q1 2027
+- **Core Directive:** Introduce a 2-stage candidate scoring pipeline featuring `Qwen/Qwen3-Reranker-0.6B` cross-encoder to elevate candidate ordering while strictly preserving deterministic G0–G6 veto gates.
+- **Detailed Engineering Roadmap:**
+  - `[ ] PLANNED` **Qwen3-Reranker-0.6B Integration:** Implement `Qwen3RerankerProvider` wrapping the 0.6B cross-encoder model to score `(query_description, candidate_description)` pairs with deep contextual cross-attention.
+  - `[ ] PLANNED` **Multi-Stage Pipeline (`retrieve → rerank → technical validation → veto`):**
+    1. *Stage 1 (Retrieval):* First-pass pgvector HNSW + blocking filters retrieve top-50 candidate pool.
+    2. *Stage 2 (Neural Rerank):* `Qwen3-Reranker-0.6B` cross-scores candidates, prioritizing candidates with highest contextual nuance for review.
+    3. *Stage 3 (Technical Validation):* Typed attribute comparator executes deterministic matrix comparison across dimensional, pressure, and grade attributes.
+    4. *Stage 4 (Safety Veto Lattice):* Deterministic Gates G0–G6 evaluate hard vetoes.
+  - `[ ] PLANNED` **Non-Negotiable Safety Invariant:** Neural reranker confidence is an input to prioritization only; it can NEVER override an engineering conflict. If Gate G2 detects a property class mismatch (e.g., 8.8 vs 10.9), the pair is unconditionally forced to `NOT_EQUIVALENT` with confidence `0.00`.
+
+#### Version v2.2 — Hybrid Retrieval
+- **Status:** `[ ] PLANNED`
+- **Target Horizon:** Q2 2027
+- **Core Directive:** Implement hybrid dense + sparse retrieval utilizing `BAAI/bge-m3` and empirically determine the optimal retrieval configuration.
+- **Detailed Engineering Roadmap:**
+  - `[ ] PLANNED` **BGE-M3 Dense + Sparse Retrieval:** Implement `BgeM3HybridProvider` supporting multi-function embeddings:
+    - Dense representation for broad semantic matching.
+    - Lexical / sparse weights (learned term weights) for exact technical code and alphanumeric part token matching.
+    - Multi-vector (ColBERT-style) scoring capabilities for long item specifications.
+  - `[ ] PLANNED` **Benchmark Against Qwen Pipeline:** Rigorously evaluate three candidate retrieval configurations against ground-truth pairs:
+    - Option A: Dense-only Qwen3-Embedding-0.6B + RapidFuzz.
+    - Option B: BGE-M3 dense-only + RapidFuzz.
+    - Option C: BGE-M3 hybrid (dense vector + sparse lexical weights) with Reciprocal Rank Fusion (RRF).
+  - `[ ] PLANNED` **Data-Driven Configuration Selection:** Select the champion retrieval configuration based on empirical Recall@k, candidate reduction %, and per-query latency.
+
+#### Version v2.3 — Evaluation & Model Assurance
+- **Status:** `[ ] PLANNED`
+- **Target Horizon:** Q2 2027
+- **Core Directive:** Establish an enterprise model assurance framework delivering granular per-category metrics, latency monitoring, and visual model comparison dashboards.
+- **Detailed Engineering Roadmap:**
+  - `[ ] PLANNED` **Per-Category Precision / Recall / F1:** Expand evaluation engine (`backend/app/eval/`) to report separate P/R/F1 scores and candidate reduction metrics for each of the 6 core industrial categories (BOLT, PIPE, BEARING, VALVE, GASKET, CABLE).
+  - `[ ] PLANNED` **Automated Confusion Matrix:** Generate automated 4x4 classification confusion matrices across verdicts (`MATCH`, `COMPATIBLE`, `CONFLICT`, `UNKNOWN`) comparing model predictions against expert human review baselines.
+  - `[ ] PLANNED` **Latency & Candidate Reduction Profiling:**
+    - Profile P50, P95, and P99 latency percentiles across embedding generation, vector retrieval, cross-encoding, and veto lattice execution.
+    - Track candidate reduction ratio: verifying pruning efficiency from raw cartesian space $O(N^2)$ down to candidate pool.
+  - `[ ] PLANNED` **Web Model Assurance Dashboard:** Add a Model Assurance & Comparison tab in the Web UI (`/assurance` or enhanced `/analytics`), visualizing:
+    - Live model comparison curves (MiniLM vs Qwen3 vs BGE-M3).
+    - Per-category radar charts for extraction fidelity and equivalence recall.
+    - Safety gate activation frequency and veto audit logs.
+
+#### Version v2.4 — Enterprise Scale & Multi-Tenant Pipeline
+- **Status:** `[ ] PLANNED`
+- **Target Horizon:** Q2 2027
+- **Core Directive:** Scale NUMM from prototype demo capacity to enterprise multi-million record processing using distributed asynchronous worker architectures.
+- **Detailed Engineering Roadmap:**
+  - `[ ] PLANNED` **Redis / Celery Distributed Task Architecture:** Decouple FastAPI ingestion and matching endpoints from long-running computations using Redis message brokers and distributed Celery worker nodes.
+  - `[ ] PLANNED` **Large-Batch Chunked Ingestion:** Implement streaming backpressure ingestion capable of parsing, validating, and embedding multi-gigabyte CPSE catalogs (10M+ material records) without memory exhaustion.
+  - `[ ] PLANNED` **Asynchronous Matching Orchestration:** Enable parallelized batch matching runs partitioned by CPSE and category, supporting real-time progress pub/sub events via Redis WebSockets.
+  - `[ ] PLANNED` **Millions-of-Record Storage Architecture:** Implement table partitioning by CPSE/category in PostgreSQL, optimized `halfvec` or product quantization (PQ) vector indexes, and connection pooling for enterprise high-concurrency environments.
 
 ---
 
@@ -559,15 +634,16 @@ Empirical completion breakdown based on verified functionality and automated tes
 
 ---
 
-## 6. REMAINING WORK
+## 6. REMAINING WORK & NEXT RELEASE HORIZONS (v2.0 – v2.4)
 
-Meaningful future engineering enhancements (post-prototype production backlog):
+Post-prototype production release plan mapping future engineering enhancements:
 
-1. **Production SAP Gateway:** Replace `MockSapAdapter` with authenticated RFC/OData HTTPS connector to SAP S/4HANA.
-2. **Multi-Gigabyte CPSE Catalogs:** Scale background batch ingestion beyond 22,500 records to multi-million line CPSE catalogs.
-3. **Enterprise Single Sign-On (SSO):** Integrate SAML 2.0 / OpenID Connect with corporate CPSE directory providers (e.g., Azure AD / Keycloak).
-4. **Neural Cross-Encoder Reranker:** Add optional BAAI/bge-reranker-v2-m3 stage in `hybrid_pipeline` when cross-encoder GPU acceleration is available.
-5. **Distributed Task Queue:** Scale asynchronous batch matching across Celery / Redis worker nodes for parallel multi-tenant workloads.
+1. **v2.0 (Intelligence & Retrieval Upgrade):** Qwen3-Embedding-0.6B integration, MiniLM empirical benchmark, enriched multi-standard attribute extraction, calibrated HNSW candidate blocking.
+2. **v2.1 (Neural Reranking):** Qwen3-Reranker-0.6B cross-encoder in a `retrieve → rerank → technical validation → veto` pipeline, maintaining deterministic G0–G6 safety overrides.
+3. **v2.2 (Hybrid Retrieval):** BGE-M3 dense + sparse hybrid retrieval, empirical benchmark against Qwen pipeline, and optimal retrieval configuration selection.
+4. **v2.3 (Evaluation & Model Assurance):** Per-category P/R/F1 breakdown, confusion matrices, latency percentiles, candidate reduction curves, and Web Model Assurance dashboard.
+5. **v2.4 (Enterprise Scale):** Distributed Redis/Celery worker cluster, streaming multi-million row batch ingestion, distributed async matching orchestrator.
+6. **Enterprise Integrations (Post-v2):** Production SAP S/4HANA RFC/OData HTTPS connector and Enterprise Single Sign-On (SSO via SAML 2.0 / OIDC).
 
 
 
