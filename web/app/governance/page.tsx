@@ -28,7 +28,8 @@ import {
   Activity,
   CheckCircle2,
   Lock,
-  Database
+  Database,
+  Download
 } from 'lucide-react';
 import {
   CpseNetworkIllustration,
@@ -92,6 +93,41 @@ export default function GovernancePage() {
   const [isMatchModalOpen, setIsMatchModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const [isExportingCrosswalk, setIsExportingCrosswalk] = useState(false);
+
+  const handleExportCrosswalk = async () => {
+    if (!token || isExportingCrosswalk) return;
+    setIsExportingCrosswalk(true);
+    try {
+      const apiHost = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiHost}/api/v1/exports/crosswalk.csv`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (response.ok) {
+        const cd = response.headers.get('content-disposition');
+        let filename = `national_material_crosswalk_${new Date().toISOString().slice(0, 10)}.csv`;
+        if (cd) {
+          const match = cd.match(/filename="?([^";]+)"?/);
+          if (match && match[1]) filename = match[1];
+        }
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } else {
+        alert(`Failed to export crosswalk (HTTP ${response.status})`);
+      }
+    } catch (e) {
+      console.error('Crosswalk export error:', e);
+      alert('Network error during crosswalk export');
+    } finally {
+      setIsExportingCrosswalk(false);
+    }
+  };
 
   const fetchDashboardData = async () => {
     if (!token) return;
@@ -713,9 +749,37 @@ export default function GovernancePage() {
               <span style={{ color: tokens.colors.textSecondary }}>Total Source Materials:</span>
               <strong style={{ color: tokens.colors.textPrimary }}>{(summary?.total_materials ?? 22500).toLocaleString()}</strong>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', padding: '0.45rem 0.6rem', background: tokens.colors.successBg, border: `1px solid ${tokens.colors.successBorder}`, borderRadius: '0.375rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', padding: '0.45rem 0.6rem', background: tokens.colors.successBg, border: `1px solid ${tokens.colors.successBorder}`, borderRadius: '0.375rem' }}>
               <span style={{ color: tokens.colors.success, fontWeight: 700 }}>Active Harmonized Crosswalks:</span>
-              <strong style={{ color: tokens.colors.success }}>{(summary?.legacy_mappings_count ?? 12).toLocaleString()} mappings</strong>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <strong style={{ color: tokens.colors.success }}>{(summary?.legacy_mappings_count ?? 12).toLocaleString()} mappings</strong>
+                <button
+                  onClick={handleExportCrosswalk}
+                  disabled={isExportingCrosswalk}
+                  title="Download National Crosswalk CSV"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    padding: '0.2rem 0.45rem',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    color: tokens.colors.primary,
+                    background: tokens.colors.surface,
+                    border: `1px solid ${tokens.colors.primaryBorder}`,
+                    borderRadius: '0.25rem',
+                    cursor: isExportingCrosswalk ? 'wait' : 'pointer',
+                    transition: 'all 0.15s'
+                  }}
+                >
+                  {isExportingCrosswalk ? (
+                    <RefreshCw style={{ width: '11px', height: '11px', animation: 'spin 1s linear infinite' }} />
+                  ) : (
+                    <Download style={{ width: '11px', height: '11px' }} />
+                  )}
+                  Export CSV
+                </button>
+              </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', padding: '0.45rem 0.6rem', background: tokens.colors.surfaceSubtle, borderRadius: '0.375rem' }}>
               <span style={{ color: tokens.colors.textSecondary }}>Standardized National Materials (NMCs):</span>

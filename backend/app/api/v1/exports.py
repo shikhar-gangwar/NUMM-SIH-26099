@@ -1,3 +1,4 @@
+from typing import Optional
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
 import csv
@@ -12,18 +13,27 @@ router = APIRouter(tags=["Exports"])
 
 @router.get("/exports/crosswalk.csv")
 def export_crosswalk_csv(
+    nmc: Optional[str] = None,
+    category_code: Optional[str] = None,
     db: Session = Depends(get_db),
     current_user = Depends(require_role(["VIEWER", "REVIEWER", "DATA_STEWARD", "SUPER_ADMIN"]))
 ):
     """
     Exports all active CPSE-to-NMC legacy mappings as a CSV file.
+    Supports optional filtering by NMC or Category Code.
     """
-    mappings = (
+    query = (
         db.query(LegacyMapping)
         .filter(LegacyMapping.status == "ACTIVE")
-        .order_by(LegacyMapping.created_at.desc())
-        .all()
     )
+    if nmc or category_code:
+        query = query.join(NationalMaterial, LegacyMapping.national_material_uid == NationalMaterial.uid)
+        if nmc:
+            query = query.filter(NationalMaterial.nmc.ilike(f"%{nmc.strip()}%"))
+        if category_code:
+            query = query.filter(NationalMaterial.category_code == category_code.strip())
+
+    mappings = query.order_by(LegacyMapping.created_at.desc()).all()
 
     output = io.StringIO()
     writer = csv.writer(output)
@@ -45,13 +55,13 @@ def export_crosswalk_csv(
         cpse_code = "UNKNOWN"
         source_code = ""
         raw_desc = ""
-        category_code = ""
+        category_code_val = ""
         canonical_desc = ""
-        nmc = ""
+        nmc_val = ""
 
         if nat:
-            nmc = nat.nmc
-            category_code = nat.category_code
+            nmc_val = nat.nmc
+            category_code_val = nat.category_code
             canonical_desc = nat.canonical_description
 
         if mat:
@@ -62,22 +72,33 @@ def export_crosswalk_csv(
                 cpse_code = cpse.code
 
         writer.writerow([
-            nmc,
+            nmc_val,
             leg.national_material_uid,
             cpse_code,
             source_code,
             raw_desc,
             canonical_desc,
-            category_code,
+            category_code_val,
             leg.valid_from.isoformat() if leg.valid_from else "",
             leg.status
         ])
 
     csv_content = output.getvalue()
-    filename = f"national_material_crosswalk_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.csv"
+    ts = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
+    if nmc:
+        clean_nmc = nmc.replace("-", "_").replace(" ", "")
+        filename = f"crosswalk_{clean_nmc}_{ts}.csv"
+    elif category_code:
+        filename = f"crosswalk_{category_code.lower()}_{ts}.csv"
+    else:
+        filename = f"national_material_crosswalk_{ts}.csv"
 
     return Response(
         content=csv_content,
-        media_type="text/csv",
-        headers={"Content-Disposition": f"attachment; filename={filename}"}
+        media_type="text/csv; charset=utf-8",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Access-Control-Expose-Headers": "Content-Disposition"
+        }
     )
+

@@ -56,12 +56,17 @@ export default function AppShell({ children }: AppShellProps) {
     return null;
   }
 
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportSuccess, setExportSuccess] = useState(false);
+
   const handleLogout = () => {
     logout();
     router.push('/login');
   };
 
   const handleExportCSV = async () => {
+    if (isExporting) return;
+    setIsExporting(true);
     try {
       const apiHost = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
       const response = await fetch(`${apiHost}/api/v1/exports/crosswalk.csv`, {
@@ -70,20 +75,30 @@ export default function AppShell({ children }: AppShellProps) {
         }
       });
       if (response.ok) {
+        const contentDisposition = response.headers.get('content-disposition');
+        let filename = `national_material_crosswalk_${new Date().toISOString().slice(0, 10)}.csv`;
+        if (contentDisposition) {
+          const match = contentDisposition.match(/filename="?([^";]+)"?/);
+          if (match && match[1]) filename = match[1];
+        }
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `national_material_crosswalk_${new Date().toISOString().slice(0, 10)}.csv`;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         a.remove();
+        setExportSuccess(true);
+        setTimeout(() => setExportSuccess(false), 2500);
       } else {
-        alert('Failed to generate export file');
+        alert(`Failed to generate export file (HTTP ${response.status})`);
       }
     } catch (e) {
       console.error('Export error:', e);
-      alert('Network error during export');
+      alert('Network error during crosswalk export');
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -234,23 +249,37 @@ export default function AppShell({ children }: AppShellProps) {
           {/* Export Crosswalk CSV */}
           <button
             onClick={handleExportCSV}
+            disabled={isExporting}
+            title="Download authoritative multi-CPSE legacy code crosswalk CSV (RFC 4180)"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.4rem',
               padding: '0.45rem 0.75rem',
-              background: 'var(--surface-2)',
-              color: 'var(--text-primary)',
-              border: '1px solid var(--border)',
+              background: exportSuccess
+                ? (theme === 'dark' ? 'rgba(34, 197, 94, 0.2)' : '#dcfce7')
+                : 'var(--surface-2)',
+              color: exportSuccess
+                ? (theme === 'dark' ? '#4ade80' : '#15803d')
+                : 'var(--text-primary)',
+              border: exportSuccess
+                ? (theme === 'dark' ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid #86efac')
+                : '1px solid var(--border)',
               borderRadius: '0.375rem',
               fontSize: '0.8rem',
               fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.15s'
+              cursor: isExporting ? 'wait' : 'pointer',
+              transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
-            <Download style={{ width: '14px', height: '14px', color: 'var(--text-muted)' }} />
-            Export Crosswalk
+            {isExporting ? (
+              <RefreshCw style={{ width: '14px', height: '14px', animation: 'spin 1s linear infinite' }} />
+            ) : exportSuccess ? (
+              <CheckCircle2 style={{ width: '14px', height: '14px', color: '#10b981' }} />
+            ) : (
+              <Download style={{ width: '14px', height: '14px', color: 'var(--text-muted)' }} />
+            )}
+            {isExporting ? 'Exporting...' : exportSuccess ? 'Exported!' : 'Export Crosswalk'}
           </button>
 
           {/* Theme Toggle (Light / Dark) */}
