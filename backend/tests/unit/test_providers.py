@@ -49,3 +49,21 @@ def test_qwen3_reranker():
     ])
     assert len(scores) == 2
     assert scores[0] > scores[1]  # Exact bolt query scores higher than unrelated pipe
+
+def test_bge_m3_embedding():
+    from app.ai.providers.bge import BGEM3EmbeddingProvider
+    provider = BGEM3EmbeddingProvider(dimension=1024)
+    fp = provider.fingerprint()
+    assert fp.provider == "bge"
+    assert fp.dimension == 1024
+    assert fp.model_id == "BAAI/bge-m3"
+
+    vecs = provider.embed_documents(["SEAMLESS CARBON STEEL PIPE 2 INCH SCH 40"])
+    assert len(vecs) == 1
+    assert len(vecs[0]) == 1024
+
+    sparse = provider.compute_sparse_weights(["SEAMLESS CARBON STEEL PIPE 2 INCH SCH 40"])
+    assert len(sparse) == 1
+    assert "pipe" in sparse[0]
+    assert sparse[0]["pipe"] > 0.0
+

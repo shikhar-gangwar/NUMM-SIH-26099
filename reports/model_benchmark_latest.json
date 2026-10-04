@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-04T21:55:23Z",
+  "timestamp": "2026-10-04T22:09:40Z",
   "eval_pairs_count": 9,
   "models_evaluated": {
     "minilm_l6_v2": {
@@ -11,9 +11,9 @@
       "f1": 1.0,
       "candidate_reduction_ratio": 0.965,
       "top_k_candidate_recall": 1.0,
-      "latency_ms_per_query": 1.39,
-      "throughput_texts_per_sec": 721.2,
-      "memory_delta_mb": 10.46,
+      "latency_ms_per_query": 1.71,
+      "throughput_texts_per_sec": 585.5,
+      "memory_delta_mb": 10.54,
       "antithesis_cosine_sim": 0.9792,
       "unrelated_cosine_sim": 0.0034,
       "veto_88_vs_109_pass_rate": 1.0,
@@ -65,9 +65,63 @@
       "f1": 1.0,
       "candidate_reduction_ratio": 0.965,
       "top_k_candidate_recall": 1.0,
-      "latency_ms_per_query": 1.06,
-      "throughput_texts_per_sec": 947.1,
-      "memory_delta_mb": 4.83,
+      "latency_ms_per_query": 1.75,
+      "throughput_texts_per_sec": 570.0,
+      "memory_delta_mb": 4.02,
+      "antithesis_cosine_sim": 0.991,
+      "unrelated_cosine_sim": 0.0044,
+      "veto_88_vs_109_pass_rate": 1.0,
+      "per_category": {
+        "BOLT": {
+          "pairs": 5,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "PIPE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BEARING": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VALVE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "GASKET": {
+          "pairs": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "CABLE": {
+          "pairs": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "bge_m3": {
+      "provider": "BGE-M3",
+      "model_id": "BAAI/bge-m3",
+      "dimension": 1024,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "candidate_reduction_ratio": 0.965,
+      "top_k_candidate_recall": 1.0,
+      "latency_ms_per_query": 2.06,
+      "throughput_texts_per_sec": 484.8,
+      "memory_delta_mb": 1.71,
       "antithesis_cosine_sim": 0.991,
       "unrelated_cosine_sim": 0.0044,
       "veto_88_vs_109_pass_rate": 1.0,
@@ -119,9 +173,9 @@
       "f1": 1.0,
       "candidate_reduction_ratio": 0.965,
       "top_k_candidate_recall": 1.0,
-      "latency_ms_per_query": 1.07,
-      "throughput_texts_per_sec": 935.4,
-      "memory_delta_mb": 0.07,
+      "latency_ms_per_query": 0.96,
+      "throughput_texts_per_sec": 1040.5,
+      "memory_delta_mb": 0.78,
       "antithesis_cosine_sim": 0.9792,
       "unrelated_cosine_sim": 0.0034,
       "veto_88_vs_109_pass_rate": 1.0,
@@ -167,5 +221,5 @@
   },
   "promotion_verdict": "RETAIN_MINILM_AS_DEFAULT",
   "default_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "verdict_rationale": "MiniLM maintains 100% precision & recall with lower latency (1.39ms vs 1.06ms). Qwen3 remains an advanced experimental provider per Rule 16."
+  "verdict_rationale": "MiniLM maintains 100% precision & recall with lower latency (1.71ms vs 1.75ms). Qwen3 remains an advanced experimental provider per Rule 16."
 }

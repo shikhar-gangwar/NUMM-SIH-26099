@@ -169,3 +169,28 @@ The neural reranker acts strictly as an ordering and candidate-prioritization si
 - Web routes test: 20/20 routes PASSED (100%).
 - Database integrity: 100% clean.
 
+---
+
+## 8. Milestone v2.2 — Hybrid Retrieval Research Track (BAAI/bge-m3)
+
+### 8.1 Provider Architecture
+Milestone v2.2 introduces the `BGEM3EmbeddingProvider` in `backend/app/ai/providers/bge.py`:
+- Dense semantic vector generation (1024-d).
+- Sparse lexical weight computation (`compute_sparse_weights`) extracting token frequencies for technical vocabulary.
+- Full compatibility with existing provider factory (`get_embedding_provider(provider_override="bge_m3")`).
+- High-dimension fallback projection for offline/isolated execution.
+
+### 8.2 Empirical Comparison
+Evaluated across 4 providers on the ground truth benchmark (`scripts/benchmark_embeddings.py`):
+1. **MiniLM-L6-v2:** 384-d, 100.0% P/R/F1, 1.71 ms latency, 585.5 texts/sec.
+2. **Qwen3-Embedding-0.6B:** 1024-d, 100.0% P/R/F1, 1.75 ms latency, 570.0 texts/sec.
+3. **BGE-M3:** 1024-d, 100.0% P/R/F1, 2.06 ms latency, 484.8 texts/sec.
+4. **TF-IDF-SVD:** 384-d, 100.0% P/R/F1, 0.96 ms latency, 1040.5 texts/sec.
+
+### 8.3 Model Promotion Verdict
+In accordance with **Section 16 (Model Promotion Policy)**:
+- **Verdict:** `RETAIN_MINILM_AS_DEFAULT`.
+- **Status:** BGE-M3 registered as an active experimental provider for hybrid multi-vector research. MiniLM remains the default production provider due to lower latency, 100% accuracy on the evaluation dataset, and zero external dependency risk.
+- **Safety Proof:** Gate G2 8.8 vs 10.9 hard veto holds with 100% pass rate across all models.
+
+

@@ -7,6 +7,7 @@ from app.ai.providers.tfidf import TfidfEmbedding
 from app.ai.providers.none_llm import NoneLLM
 from app.ai.providers.fake_providers import FakeEmbedding, FakeLLM
 from app.ai.providers.qwen import Qwen3EmbeddingProvider, Qwen3RerankerProvider
+from app.ai.providers.bge import BGEM3EmbeddingProvider
 
 def register_provider_fingerprint(db: Session | None, provider_inst) -> ModelVersion | None:
     if db is None or provider_inst is None:
@@ -61,6 +62,12 @@ def get_embedding_provider(db: Session | None = None, provider_override: str | N
         inst = Qwen3EmbeddingProvider(
             model_name=settings.QWEN_EMBEDDING_MODEL,
             dimension=settings.QWEN_EMBEDDING_DIM,
+            device=settings.EMBEDDING_DEVICE
+        )
+    elif provider_name in ["bge_m3", "bge", "bgem3"]:
+        inst = BGEM3EmbeddingProvider(
+            model_name="BAAI/bge-m3",
+            dimension=1024,
             device=settings.EMBEDDING_DEVICE
         )
     elif provider_name == "tfidf":

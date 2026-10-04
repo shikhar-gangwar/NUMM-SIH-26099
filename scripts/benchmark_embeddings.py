@@ -189,7 +189,16 @@ def main():
         dim=1024
     )
 
-    # 3. TF-IDF Fallback
+    # 3. BGE-M3 candidate (v2.2 Hybrid Retrieval Track)
+    p_bge = get_embedding_provider(provider_override="bge_m3")
+    results["bge_m3"] = benchmark_provider(
+        p_bge, pairs,
+        name="BGE-M3",
+        model_id="BAAI/bge-m3",
+        dim=1024
+    )
+
+    # 4. TF-IDF Fallback
     p_tfidf = get_embedding_provider(provider_override="tfidf")
     results["tfidf_svd"] = benchmark_provider(
         p_tfidf, pairs,
@@ -256,15 +265,16 @@ def main():
             f.write(f"| **{v['provider']}** | {v['dimension']} | {v['precision']*100:.1f}% | {v['recall']*100:.1f}% | {v['f1']*100:.1f}% | {v['latency_ms_per_query']} ms | {v['throughput_texts_per_sec']} | {v['antithesis_cosine_sim']} | {v['veto_88_vs_109_pass_rate']*100:.1f}% |\n")
         
         f.write("\n## 2. Per-Category Performance Breakdown\n\n")
-        f.write("| Category | MiniLM F1 | Qwen3-0.6B F1 | TF-IDF F1 | Pairs Evaluated |\n")
-        f.write("|---|---|---|---|---|\n")
+        f.write("| Category | MiniLM F1 | Qwen3-0.6B F1 | BGE-M3 F1 | TF-IDF F1 | Pairs Evaluated |\n")
+        f.write("|---|---|---|---|---|---|\n")
         cats = ["BOLT", "PIPE", "BEARING", "VALVE", "GASKET", "CABLE"]
         for c in cats:
             m_f1 = results["minilm_l6_v2"]["per_category"].get(c, {}).get("f1", 1.0)
             q_f1 = results["qwen3_0_6b"]["per_category"].get(c, {}).get("f1", 1.0)
+            b_f1 = results.get("bge_m3", {}).get("per_category", {}).get(c, {}).get("f1", 1.0)
             t_f1 = results["tfidf_svd"]["per_category"].get(c, {}).get("f1", 1.0)
             prs = results["minilm_l6_v2"]["per_category"].get(c, {}).get("pairs", 0)
-            f.write(f"| **{c}** | {m_f1*100:.1f}% | {q_f1*100:.1f}% | {t_f1*100:.1f}% | {prs} |\n")
+            f.write(f"| **{c}** | {m_f1*100:.1f}% | {q_f1*100:.1f}% | {b_f1*100:.1f}% | {t_f1*100:.1f}% | {prs} |\n")
 
         f.write("\n## 3. Safety Invariant Proof (Rule 1 & Rule 7)\n\n")
         f.write("Across all evaluated models, semantic similarity for property class conflicts (e.g. 8.8 vs 10.9) remains high (0.85+).\n")
