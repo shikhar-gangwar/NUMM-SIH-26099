@@ -350,3 +350,92 @@ html, body {
   border-color: #22C55E !important;
   color: #86EFAC !important;
 }
+
+/* ========================================================================= */
+/* SMOOTH MICRO-ANIMATIONS & INTERACTION REFINEMENTS (v2.6 UX Upgrade)       */
+/* ========================================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes barGrow {
+  from {
+    width: 0%;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2.5s ease-in-out infinite;
+}
+
+/* Interactive Card Transitions */
+.interactive-card {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .interactive-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45), 0 0 15px 1px rgba(250, 204, 21, 0.1);
+  border-color: rgba(250, 204, 21, 0.3) !important;
+}
+
+/* Interactive Button Hover */
+button {
+  transition: all 0.18s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.985);
+}
+
+/* Graph bar hover glow */
+.chart-bar-interactive {
+  transition: filter 0.2s ease, transform 0.2s ease;
+  transform-origin: left;
+}
+
+.chart-bar-interactive:hover {
+  filter: brightness(1.15);
+  transform: scaleX(1.02);
+}
+
