@@ -88,3 +88,45 @@ def test_run_matching_orchestrator(db_session, sample_user):
     # Verify match_evidence persistence
     ev_count = db_session.query(MatchEvidence).filter_by(match_id=match_item.id).count()
     assert ev_count >= 4
+
+def test_v21_neural_reranking_pipeline(db_session, sample_user, monkeypatch):
+    from app.core.config import settings
+    monkeypatch.setattr(settings, "RERANKER_PROVIDER", "qwen3_0_6b")
+
+    cpse = Cpse(id=str(generate_uuidv7()), code="CPSE_RERANK_TEST", name="Rerank CPSE")
+    db_session.add(cpse)
+    batch = ImportBatch(
+        id=str(generate_uuidv7()), cpse_id=cpse.id, kind="MATERIAL", filename="rerank.csv",
+        sha256="dummy_hash_rerank", uploaded_by=sample_user.id
+    )
+    db_session.add(batch)
+
+    m1 = Material(
+        id=str(generate_uuidv7()), cpse_id=cpse.id, batch_id=batch.id,
+        source_code="RR-001", raw_description="HEX BOLT M12 X 60 GRADE 8.8 GALVANIZED", raw_uom="NOS",
+        category_hint="BOLT"
+    )
+    m2 = Material(
+        id=str(generate_uuidv7()), cpse_id=cpse.id, batch_id=batch.id,
+        source_code="RR-002", raw_description="HEX BOLT M12 X 60 GRADE 10.9 GALVANIZED", raw_uom="NOS",
+        category_hint="BOLT"
+    )
+    db_session.add_all([m1, m2])
+    db_session.commit()
+
+    # Execute match run with neural reranking enabled
+    match_run = run_matching(db_session, scope={"batch_id": batch.id}, mode="LIVE", user_id=sample_user.id)
+    assert match_run.status == "COMPLETED"
+
+    match_row = db_session.query(MaterialMatch).filter_by(run_id=match_run.id).first()
+    assert match_row is not None
+    # Verify R signal is captured
+    assert "R" in match_row.signals
+    assert match_row.signals["R"] > 0.0
+
+    # Invariant: Neural reranker cannot bypass G2 hard veto
+    assert match_row.relationship == "NOT_EQUIVALENT"
+    assert match_row.equivalence_confidence == 0.0
+    assert match_row.veto["applied"] is True
+    assert match_row.veto["gate_id"] == "G2"
+

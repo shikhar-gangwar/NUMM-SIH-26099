@@ -128,3 +128,44 @@ In the benchmark:
 10. `VERSION.md` (Updated: v2.0 milestone status and detailed log)
 11. `docs/PROGRESS.md` (Updated: Milestone tracker)
 12. `docs/V2_ENGINEERING_REPORT.md` (New: Detailed engineering report)
+
+---
+
+## 7. Milestone v2.1 — Neural Reranking (Cross-Encoder Integration)
+
+### 7.1 Architecture & Pipeline Design
+Milestone v2.1 introduces a two-stage retrieval pipeline:
+```
+SOURCE MATERIAL
+      │
+      ▼
+NORMALIZATION
+      │
+      ▼
+CATEGORY BLOCKING & HNSW RETRIEVAL (Top-K Candidates)
+      │
+      ▼
+NEURAL RERANKER (Qwen3-Reranker-0.6B Cross-Encoder)
+      │
+      ▼
+TECHNICAL ATTRIBUTE COMPARISON (Tiers 1, 2, 3)
+      │
+      ▼
+G0-G6 DETERMINISTIC SAFETY VETO LATTICE
+      │
+      ▼
+FINAL RELATIONSHIP & HUMAN REVIEW
+```
+
+### 7.2 Safety Invariant Enforcement
+The neural reranker acts strictly as an ordering and candidate-prioritization signal:
+- Reranker scores are persisted in `MaterialMatch.signals["R"]`.
+- Under no circumstances can a high rerank score approve equivalence, issue an NMC, convert `UNKNOWN` to `MATCH`, or bypass deterministic gates.
+- Verified in `backend/tests/matching/test_matching_pipeline.py::test_v21_neural_reranking_pipeline`: Even with high rerank scores, the 8.8 vs 10.9 trap encounters Gate G2 hard veto, forcing confidence to `0.00` and verdict to `NOT_EQUIVALENT`.
+
+### 7.3 Verification
+- Backend tests: 58/58 PASSED (100%).
+- Golden demo test: 20/20 steps PASSED (100%).
+- Web routes test: 20/20 routes PASSED (100%).
+- Database integrity: 100% clean.
+

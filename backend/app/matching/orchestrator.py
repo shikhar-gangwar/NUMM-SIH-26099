@@ -16,6 +16,7 @@ from app.extraction.extractor import detect_category, extract_attributes
 from app.matching.embedding_store import ensure_material_embeddings
 from app.matching.blocking import get_candidate_materials
 from app.matching.engine import evaluate_material_pair
+from app.ai.providers.factory import get_reranker_provider
 from app.config_loader.loader import load_config_bundle
 from app.audit.service import AuditService
 from app.core.ids import generate_uuidv7
@@ -229,6 +230,8 @@ def run_matching(
         }
         db.commit()
 
+        reranker = get_reranker_provider(db=db)
+
         # 4. Process pairwise matching for each target material
         for idx, target in enumerate(targets):
             target_dict = _build_material_dict(db, target)
@@ -240,6 +243,22 @@ def run_matching(
 
             if not candidates:
                 continue
+
+            # Optional Neural Reranking Stage (v2.1: retrieve -> rerank -> technical validation -> veto)
+            rerank_scores_map: dict[str, float] = {}
+            if reranker and len(candidates) >= 1:
+                target_text = target.normalized_text or target.raw_description or ""
+                pairs_to_score = [
+                    (target_text, c.normalized_text or c.raw_description or "")
+                    for c in candidates
+                ]
+                try:
+                    scores = reranker.score_pairs(pairs_to_score)
+                    scored_candidates = sorted(zip(candidates, scores), key=lambda x: x[1], reverse=True)
+                    candidates = [c for c, _ in scored_candidates]
+                    rerank_scores_map = {c.id: s for c, s in zip(candidates, scores)}
+                except Exception:
+                    pass
 
             # Ensure candidate embeddings exist
             ensure_material_embeddings(db, candidates)
@@ -270,8 +289,9 @@ def run_matching(
                 mat_a_dict = _build_material_dict(db, mat_a_entity)
                 mat_b_dict = _build_material_dict(db, mat_b_entity)
 
-                # Execute Pairwise Engine
-                pair_res = evaluate_material_pair(mat_a_dict, mat_b_dict)
+                # Execute Pairwise Engine (with optional neural rerank score)
+                pair_rerank_score = rerank_scores_map.get(candidate.id)
+                pair_res = evaluate_material_pair(mat_a_dict, mat_b_dict, rerank_score=pair_rerank_score)
                 total_comparisons += 1
 
                 if pair_res.veto.get("applied"):

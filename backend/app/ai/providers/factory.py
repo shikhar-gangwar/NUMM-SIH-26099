@@ -78,14 +78,16 @@ def get_embedding_provider(db: Session | None = None, provider_override: str | N
 
 _cached_reranker_provider: RerankerProvider | None = None
 
+_cached_reranker_name: str | None = None
+
 def get_reranker_provider(db: Session | None = None, provider_override: str | None = None) -> RerankerProvider | None:
-    global _cached_reranker_provider
-    if provider_override is None and _cached_reranker_provider is not None:
+    global _cached_reranker_provider, _cached_reranker_name
+    provider_name = (provider_override or settings.RERANKER_PROVIDER).lower()
+
+    if provider_override is None and _cached_reranker_provider is not None and _cached_reranker_name == provider_name:
         if db:
             register_provider_fingerprint(db, _cached_reranker_provider)
         return _cached_reranker_provider
-
-    provider_name = (provider_override or settings.RERANKER_PROVIDER).lower()
     if provider_name in ["none", "", "off"]:
         return None
     elif provider_name in ["qwen3_0_6b", "qwen", "qwen3", "qwen_reranker"]:
@@ -100,6 +102,7 @@ def get_reranker_provider(db: Session | None = None, provider_override: str | No
         register_provider_fingerprint(db, inst)
     if provider_override is None:
         _cached_reranker_provider = inst
+        _cached_reranker_name = provider_name
     return inst
 
 def get_llm_provider(db: Session | None = None) -> LLMProvider:

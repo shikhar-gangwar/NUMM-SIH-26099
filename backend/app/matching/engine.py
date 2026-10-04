@@ -88,7 +88,8 @@ def calculate_attribute_score(verdicts: list[AttributeVerdict]) -> float:
 def evaluate_material_pair(
     material_a: dict,
     material_b: dict,
-    semantic_score_override: float | None = None
+    semantic_score_override: float | None = None,
+    rerank_score: float | None = None
 ) -> PairResult:
     bundle = load_config_bundle()
     scoring_cfg = bundle.scoring.get("weights", {"attribute": 0.55, "semantic": 0.20, "lexical": 0.15, "category": 0.10})
@@ -166,13 +167,17 @@ def evaluate_material_pair(
         confidence = raw_score
         explanation = f"Evaluated with raw score {raw_score:.2f} (Attr: {a_score:.2f}, Sem: {s_score:.2f}, Lex: {l_score:.2f})"
 
+    signals_dict = {"S": s_score, "L": l_score, "A": a_score, "C": c_score}
+    if rerank_score is not None:
+        signals_dict["R"] = round(rerank_score, 4)
+
     return PairResult(
         material_a_id=material_a.get("id"),
         material_b_id=material_b.get("id"),
         relationship=relationship,
         equivalence_confidence=confidence,
         raw_score=raw_score,
-        signals={"S": s_score, "L": l_score, "A": a_score, "C": c_score},
+        signals=signals_dict,
         gates=[{"gate_id": g.gate_id, "passed": g.passed, "reason": g.reason} for g in veto.gates],
         attribute_verdicts=[{
             "key": v.key, "tier": v.tier, "a_value": str(v.a_value), "b_value": str(v.b_value),

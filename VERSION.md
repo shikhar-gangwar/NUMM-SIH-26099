@@ -38,7 +38,7 @@ The coding agent is a **build-time tool only**. It is never part of the running 
 | Lexical similarity | RapidFuzz (token-set / WRatio) + char n-gram TF-IDF (`scikit-learn`) | PostgreSQL `pg_trgm` + BGE-M3 sparse lexical weights (v2.2) | RapidFuzz token-set ratio | `[✓] IMPLEMENTED + VERIFIED` (v0.4) |
 | Embedding generation | `sentence-transformers/all-MiniLM-L6-v2` (384-d) | `Qwen/Qwen3-Embedding-0.6B` (v2.0) / `BAAI/bge-m3` (v2.2) | `TfidfEmbedding` char-ngram SVD vectors | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
 | Candidate retrieval & vector storage | PostgreSQL + `pgvector` HNSW index (`idx_material_embedding_hnsw`) | `halfvec` index / hybrid dense-sparse retrieval (v2.2) | Category exact key blocking | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
-| Neural Reranker | Off in P0 | `Qwen/Qwen3-Reranker-0.6B` (v2.1) cross-encoder | First-stage HNSW order | `[ ] PLANNED` (v2.1) |
+| Neural Reranker | Off in P0 (`RERANKER_PROVIDER=none`) | `Qwen/Qwen3-Reranker-0.6B` (v2.1) cross-encoder (`RERANKER_PROVIDER=qwen3_0_6b`) | First-stage HNSW order | `[✓] IMPLEMENTED + VERIFIED` (v2.1) |
 | LLM explanation / extraction assist | Off in P0 (`LLM_PROVIDER=none`); deterministic evidence templates | Ollama local / Anthropic Cloud | Rule-based extraction & templated evidence | `[✓] IMPLEMENTED + VERIFIED` (v0.5) |
 | Category classifier | Rule-based keyword matching (`extract_attributes`) | Embedding-kNN | Keyword rules (`detect_category`) | `[✓] IMPLEMENTED + VERIFIED` (v0.3) |
 | Veto lattice & safety gates | Gates G0–G6 enforcing 8.8 vs 10.9 & UNKNOWN missing grade gates | Rules expansion | Hard-coded gate logic | `[✓] IMPLEMENTED + VERIFIED` (v0.4) |
