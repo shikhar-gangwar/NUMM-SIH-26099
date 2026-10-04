@@ -60,6 +60,8 @@ class Material(Base):
     uom_canonical = Column(String(50), nullable=True)
     uom_dimension = Column(String(50), nullable=True)
     norm_flags = Column(JSON, nullable=True)
+    provenance = Column(String(50), default="SYNTHETIC_DEMO", nullable=False, index=True)
+    provenance_metadata = Column(JSON, nullable=True)
     status = Column(String(20), default="ACTIVE", nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     __table_args__ = (

@@ -28,10 +28,30 @@ def compute_canonical_hash(data: dict) -> str:
     canonical_json = json.dumps(clean_data, sort_keys=True)
     return hashlib.sha256(canonical_json.encode("utf-8")).hexdigest()
 
+def resolve_config_path(path: str) -> str:
+    if not path:
+        return path
+    if os.path.exists(path):
+        return path
+    # Fallback for host environment where /app/config/ is mapped to config/
+    if path.startswith("/app/"):
+        fallback = path[5:] # remove leading /app/
+        if os.path.exists(fallback):
+            return fallback
+        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", fallback))
+        if os.path.exists(repo_root):
+            return repo_root
+    elif not os.path.isabs(path):
+        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", path))
+        if os.path.exists(repo_root):
+            return repo_root
+    return path
+
 def load_yaml(file_path: str) -> tuple[dict, str]:
-    if not os.path.exists(file_path):
+    resolved_path = resolve_config_path(file_path)
+    if not os.path.exists(resolved_path):
         return {}, ""
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(resolved_path, "r", encoding="utf-8") as f:
         content = yaml.safe_load(f) or {}
     config_hash = compute_canonical_hash(content)
     return content, config_hash
@@ -54,7 +74,13 @@ def register_config_version(db: Session, kind: str, name: str, version_tag: str,
     db.refresh(mv)
     return mv
 
+_GLOBAL_CACHED_BUNDLE = None
+
 def load_config_bundle(db: Session | None = None) -> ConfigBundle:
+    global _GLOBAL_CACHED_BUNDLE
+    if db is None and _GLOBAL_CACHED_BUNDLE is not None:
+        return _GLOBAL_CACHED_BUNDLE
+
     scoring, scoring_hash = load_yaml(settings.MATCH_CONFIG_PATH)
     abbrev_raw, _ = load_yaml(settings.ABBREVIATIONS_PATH)
     abbrev = abbrev_raw.get("abbreviations", abbrev_raw)
@@ -72,7 +98,7 @@ def load_config_bundle(db: Session | None = None) -> ConfigBundle:
     uom = uom_raw.get("units", uom_raw)
     
     category_packs = {}
-    packs_dir = settings.CATEGORY_PACKS_DIR
+    packs_dir = resolve_config_path(settings.CATEGORY_PACKS_DIR)
     if os.path.exists(packs_dir):
         for fname in os.listdir(packs_dir):
             if fname.endswith(".yaml") or fname.endswith(".yml"):
@@ -86,4 +112,7 @@ def load_config_bundle(db: Session | None = None) -> ConfigBundle:
     if db and scoring_hash:
         register_config_version(db, "SCORING_CONFIG", "scoring.yaml", str(scoring.get("version", 1)), scoring_hash)
         
-    return ConfigBundle(scoring, abbrev, aliases, std_equiv, sizes, uom, category_packs)
+    bundle = ConfigBundle(scoring, abbrev, aliases, std_equiv, sizes, uom, category_packs)
+    if db is None:
+        _GLOBAL_CACHED_BUNDLE = bundle
+    return bundle

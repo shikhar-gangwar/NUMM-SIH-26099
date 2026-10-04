@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/sih_master"
     JWT_SECRET: str = "change-this-in-production-to-a-secure-secret-key-32-chars"
     JWT_ACCESS_TTL_MIN: int = 30
-    SEED_ADMIN_PASSWORD: str = "AdminPassword123!"
+    SEED_ADMIN_PASSWORD: str = ""
     CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
     
     # Provider Settings

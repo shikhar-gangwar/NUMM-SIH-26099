@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from sqlalchemy.orm import Session
 from app.db.models import AuditEvent
-from app.audit.hash_chain import GENESIS_HASH, compute_audit_hash, verify_hash_chain
+from app.audit.hash_chain import GENESIS_HASH, compute_audit_hash, verify_hash_chain, format_ts_canonical
 
 class AuditService:
     @staticmethod
@@ -21,13 +21,13 @@ class AuditService:
         last_event = db.query(AuditEvent).order_by(AuditEvent.seq.desc()).first()
         prev_hash = last_event.hash if last_event else GENESIS_HASH
         
-        # Calculate next seq
         next_seq = (last_event.seq + 1) if last_event else 1
         now_ts = datetime.now(timezone.utc)
+        ts_str = format_ts_canonical(now_ts)
         
         payload = {
             "seq": next_seq,
-            "ts": now_ts.isoformat(),
+            "ts": ts_str,
             "actor_id": actor_id,
             "actor_role": actor_role,
             "action": action,

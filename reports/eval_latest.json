@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-10-04T19:11:42.190331+00:00",
+  "dataset": "SYNTHETIC",
+  "total_pairs_evaluated": 9,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "false_positives": 0,
+  "false_negatives": 0,
+  "fp_rate": 0.0,
+  "fn_rate": 0.0,
+  "unknown_compliance_rate": 1.0,
+  "critical_conflict_pass_rate": 1.0,
+  "veto_88_vs_109_pass_rate": 1.0,
+  "semantic_trap_pass_rate": 1.0,
+  "unsafe_auto_accepts": 0,
+  "confusion_matrix": {
+    "FUNCTIONALLY_EQUIVALENT": {
+      "FUNCTIONALLY_EQUIVALENT": 2
+    },
+    "NOT_EQUIVALENT": {
+      "NOT_EQUIVALENT": 4
+    },
+    "REVIEW_REQUIRED": {
+      "REVIEW_REQUIRED": 1
+    },
+    "RELATED": {
+      "RELATED": 2
+    }
+  }
+}

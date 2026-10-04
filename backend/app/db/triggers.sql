@@ -48,3 +48,8 @@ WHERE valid_to IS NULL AND status = 'ACTIVE';
 CREATE UNIQUE INDEX IF NOT EXISTS idx_national_material_fingerprint_unique 
 ON national_material (category_code, spec_fingerprint) 
 WHERE status IN ('DRAFT', 'ACTIVE');
+
+-- 5. pgvector HNSW index on material_embedding
+CREATE INDEX IF NOT EXISTS idx_material_embedding_hnsw 
+ON material_embedding USING hnsw (embedding vector_cosine_ops);
+

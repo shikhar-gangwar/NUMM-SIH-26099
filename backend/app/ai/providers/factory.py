@@ -32,11 +32,20 @@ def register_provider_fingerprint(db: Session | None, provider_inst) -> ModelVer
     db.refresh(mv)
     return mv
 
+_cached_embedding_provider: EmbeddingProvider | None = None
+
 def get_embedding_provider(db: Session | None = None) -> EmbeddingProvider:
+    global _cached_embedding_provider
+    if _cached_embedding_provider is not None:
+        if db:
+            register_provider_fingerprint(db, _cached_embedding_provider)
+        return _cached_embedding_provider
+
     provider_name = settings.EMBEDDING_PROVIDER.lower()
     if provider_name == "sentence_transformers":
         try:
             inst = SentenceTransformersEmbedding(settings.EMBEDDING_MODEL, settings.EMBEDDING_DEVICE)
+            inst._load_model()
         except Exception:
             # Fallback to TF-IDF if model fails to load
             inst = TfidfEmbedding(settings.EMBEDDING_DIM)
@@ -49,6 +58,7 @@ def get_embedding_provider(db: Session | None = None) -> EmbeddingProvider:
     
     if db:
         register_provider_fingerprint(db, inst)
+    _cached_embedding_provider = inst
     return inst
 
 def get_llm_provider(db: Session | None = None) -> LLMProvider:

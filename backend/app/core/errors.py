@@ -15,3 +15,11 @@ class ForbiddenException(AppException):
 class NotFoundException(AppException):
     def __init__(self, message: str = "Resource not found"):
         super().__init__(code="NOT_FOUND", message=message, status_code=status.HTTP_404_NOT_FOUND)
+
+class BadRequestException(AppException):
+    def __init__(self, message: str = "Bad request"):
+        super().__init__(code="BAD_REQUEST", message=message, status_code=status.HTTP_400_BAD_REQUEST)
+
+class ConflictException(AppException):
+    def __init__(self, message: str = "Resource conflict"):
+        super().__init__(code="CONFLICT", message=message, status_code=status.HTTP_409_CONFLICT)

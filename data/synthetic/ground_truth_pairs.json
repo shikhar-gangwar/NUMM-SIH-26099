@@ -1,0 +1,203 @@
+[
+  {
+    "id": "trap-01-true-equiv",
+    "mat_a": {
+      "id": "mat-eq-01a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BOLT-001",
+      "raw_description": "HEX BOLT M12 X 60 SS316 10.9",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "mat_b": {
+      "id": "mat-eq-01b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-BOLT-001",
+      "raw_description": "BOLT HEX M12X60 SS 316 GR10.9",
+      "raw_uom": "EA",
+      "category_hint": "BOLT"
+    },
+    "expected_relationship": "FUNCTIONALLY_EQUIVALENT",
+    "is_true_equivalent": true,
+    "description": "Same technical material described differently across CPSEs"
+  },
+  {
+    "id": "trap-02-veto-88-109",
+    "mat_a": {
+      "id": "mat-v88-01a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BOLT-002",
+      "raw_description": "HEX BOLT M12 X 60 SS316 8.8",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "mat_b": {
+      "id": "mat-v88-01b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-BOLT-002",
+      "raw_description": "HEX BOLT M12 X 60 SS316 10.9",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "expected_relationship": "NOT_EQUIVALENT",
+    "is_88_109_trap": true,
+    "simulated_semantic_score": 0.94,
+    "description": "8.8 vs 10.9 property class conflict must trigger VETO gate"
+  },
+  {
+    "id": "trap-03-unknown-missing-grade",
+    "mat_a": {
+      "id": "mat-unk-01a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BOLT-003",
+      "raw_description": "HEX BOLT M12 X 60 SS",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "mat_b": {
+      "id": "mat-unk-01b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-BOLT-003",
+      "raw_description": "HEX BOLT M12 X 60 SS316 10.9",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "expected_relationship": "REVIEW_REQUIRED",
+    "is_unknown_trap": true,
+    "description": "Missing property grade requires human review"
+  },
+  {
+    "id": "trap-04-compatible-standard",
+    "mat_a": {
+      "id": "mat-comp-01a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BOLT-004",
+      "raw_description": "HEX BOLT M10 X 50 SS304 GR 8.8 IS 1363",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "mat_b": {
+      "id": "mat-comp-01b",
+      "cpse_code": "CPSE_C",
+      "source_material_code": "CPSE_C-BOLT-004",
+      "raw_description": "HEXAGON HEAD BOLT M10 X 50 STAINLESS STEEL 304 GRADE 8.8 ISO 4016",
+      "raw_uom": "EA",
+      "category_hint": "BOLT"
+    },
+    "expected_relationship": "FUNCTIONALLY_EQUIVALENT",
+    "description": "Equivalent standards (IS 1363 vs ISO 4016)"
+  },
+  {
+    "id": "trap-05-related-length",
+    "mat_a": {
+      "id": "mat-rel-01a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BOLT-005",
+      "raw_description": "HEX BOLT M12 X 50 SS316 10.9",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "mat_b": {
+      "id": "mat-rel-01b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-BOLT-005",
+      "raw_description": "HEX BOLT M12 X 60 SS316 10.9",
+      "raw_uom": "NOS",
+      "category_hint": "BOLT"
+    },
+    "expected_relationship": "RELATED",
+    "description": "Same family, variant axis (length) differs"
+  },
+  {
+    "id": "trap-06a-pipe-sch",
+    "mat_a": {
+      "id": "mat-sem-pipe-a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-PIPE-001",
+      "raw_description": "PIPE 4 IN SCH 40 SEAMLESS A106 GR B",
+      "raw_uom": "MTR",
+      "category_hint": "PIPE"
+    },
+    "mat_b": {
+      "id": "mat-sem-pipe-b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-PIPE-001",
+      "raw_description": "PIPE 4 IN SCH 80 SEAMLESS A106 GR B",
+      "raw_uom": "MTR",
+      "category_hint": "PIPE"
+    },
+    "expected_relationship": "NOT_EQUIVALENT",
+    "is_semantic_trap": true,
+    "simulated_semantic_score": 0.95,
+    "description": "Pipe Sch 40 vs Sch 80 thickness conflict"
+  },
+  {
+    "id": "trap-06b-brg-seal",
+    "mat_a": {
+      "id": "mat-sem-brg-a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-BRG-001",
+      "raw_description": "BEARING 6205-2RS C3",
+      "raw_uom": "NOS",
+      "category_hint": "BEARING"
+    },
+    "mat_b": {
+      "id": "mat-sem-brg-b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-BRG-001",
+      "raw_description": "BEARING 6205-ZZ C3",
+      "raw_uom": "NOS",
+      "category_hint": "BEARING"
+    },
+    "expected_relationship": "NOT_EQUIVALENT",
+    "is_semantic_trap": true,
+    "simulated_semantic_score": 0.93,
+    "description": "Bearing rubber seal (2RS) vs steel shield (ZZ) conflict"
+  },
+  {
+    "id": "trap-06c-vlv-class",
+    "mat_a": {
+      "id": "mat-sem-vlv-a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-VLV-001",
+      "raw_description": "VALVE GATE 4 IN CLASS 150 SS304 FLANGED",
+      "raw_uom": "NOS",
+      "category_hint": "VALVE"
+    },
+    "mat_b": {
+      "id": "mat-sem-vlv-b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-VLV-001",
+      "raw_description": "VALVE GATE 4 IN CLASS 300 SS304 FLANGED",
+      "raw_uom": "NOS",
+      "category_hint": "VALVE"
+    },
+    "expected_relationship": "NOT_EQUIVALENT",
+    "is_semantic_trap": true,
+    "simulated_semantic_score": 0.96,
+    "description": "Valve Class 150 vs Class 300 pressure rating conflict"
+  },
+  {
+    "id": "trap-06d-cbl-cores",
+    "mat_a": {
+      "id": "mat-sem-cbl-a",
+      "cpse_code": "CPSE_A",
+      "source_material_code": "CPSE_A-CBL-001",
+      "raw_description": "CABLE 4C X 16 SQMM COPPER XLPE 1.1KV ARMOURED",
+      "raw_uom": "MTR",
+      "category_hint": "CABLE"
+    },
+    "mat_b": {
+      "id": "mat-sem-cbl-b",
+      "cpse_code": "CPSE_B",
+      "source_material_code": "CPSE_B-CBL-001",
+      "raw_description": "CABLE 3.5C X 16 SQMM COPPER XLPE 1.1KV ARMOURED",
+      "raw_uom": "MTR",
+      "category_hint": "CABLE"
+    },
+    "expected_relationship": "RELATED",
+    "is_semantic_trap": true,
+    "simulated_semantic_score": 0.95,
+    "description": "Cable 4 cores vs 3.5 cores variant axis"
+  }
+]
