@@ -41,6 +41,10 @@ def _to_material_dto(db: Session, mat: Material) -> MaterialDTO:
     cls_row = db.query(Classification).filter_by(material_id=mat.id, is_current=True).first()
     attrs = db.query(MaterialAttribute).filter_by(material_id=mat.id, is_current=True).all()
     mapping = db.query(LegacyMapping).filter_by(material_id=mat.id, status="ACTIVE").first()
+    mapping_nmc = None
+    if mapping:
+        nat_mat = db.query(NationalMaterial).filter_by(uid=mapping.national_material_uid).first()
+        mapping_nmc = nat_mat.nmc if nat_mat else mapping.national_material_uid
 
     attr_dtos = [
         AttributeValueDTO(
@@ -70,10 +74,12 @@ def _to_material_dto(db: Session, mat: Material) -> MaterialDTO:
         category_code=cls_row.category_code if cls_row else mat.category_hint,
         category_confidence=cls_row.confidence if cls_row else 1.0,
         attributes=attr_dtos,
-        mapping_nmc=mapping.national_material_uid if mapping else None,
+        mapping_nmc=mapping_nmc,
         mapping_status=mapping.status if mapping else None,
         manufacturer=mat.manufacturer,
         part_number=mat.part_number,
+        provenance=getattr(mat, "provenance", "SYNTHETIC_DEMO"),
+        provenance_metadata=getattr(mat, "provenance_metadata", None),
         created_at=mat.created_at,
         status=mat.status
     )

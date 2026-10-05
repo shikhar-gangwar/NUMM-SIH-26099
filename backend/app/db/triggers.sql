@@ -9,10 +9,10 @@ CREATE OR REPLACE FUNCTION check_material_immutability()
 RETURNS TRIGGER AS $$
 BEGIN
     IF (TG_OP = 'UPDATE') THEN
-        IF NEW.source_code <> OLD.source_code OR
-           NEW.raw_description <> OLD.raw_description OR
-           NEW.raw_uom <> OLD.raw_uom OR
-           NEW.cpse_id <> OLD.cpse_id THEN
+        IF NEW.source_code IS DISTINCT FROM OLD.source_code OR
+           NEW.raw_description IS DISTINCT FROM OLD.raw_description OR
+           NEW.raw_uom IS DISTINCT FROM OLD.raw_uom OR
+           NEW.cpse_id IS DISTINCT FROM OLD.cpse_id THEN
             RAISE EXCEPTION 'Material source fields (source_code, raw_description, raw_uom, cpse_id) are immutable and cannot be updated.';
         END IF;
     ELSIF (TG_OP = 'DELETE') THEN

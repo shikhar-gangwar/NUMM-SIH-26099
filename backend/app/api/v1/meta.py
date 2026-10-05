@@ -23,7 +23,7 @@ def get_meta_version(db: Session = Depends(get_db)):
     
     return {
         "app_name": settings.APP_NAME,
-        "app_version": "0.1.0",
+        "app_version": "2.11.0",
         "env": settings.ENV,
         "llm_provider": settings.LLM_PROVIDER,
         "llm_badge": f"LLM: {settings.LLM_PROVIDER.upper()}",

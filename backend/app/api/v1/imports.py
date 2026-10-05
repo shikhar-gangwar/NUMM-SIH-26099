@@ -17,7 +17,7 @@ async def upload_import_file(
     db: Session = Depends(get_db),
     current_user: AppUser = Depends(require_role(["DATA_STEWARD", "SUPER_ADMIN"]))
 ):
-    if not file.filename.lower().endswith((".csv", ".xlsx", ".xls")):
+    if not file.filename or not file.filename.lower().endswith((".csv", ".xlsx", ".xls")):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Unsupported file format. Please upload a .csv or .xlsx file."

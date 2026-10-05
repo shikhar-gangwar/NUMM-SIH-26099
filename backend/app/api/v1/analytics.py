@@ -104,6 +104,8 @@ def get_analytics_charts(
     matches = db.query(MaterialMatch.equivalence_confidence).all()
     conf_hist = {"0.0 - 0.5": 0, "0.5 - 0.7": 0, "0.7 - 0.9": 0, "0.9 - 1.0": 0}
     for (conf,) in matches:
+        if conf is None:
+            continue
         if conf < 0.5:
             conf_hist["0.0 - 0.5"] += 1
         elif conf < 0.7:
@@ -114,7 +116,7 @@ def get_analytics_charts(
             conf_hist["0.9 - 1.0"] += 1
 
     # 6. Veto reasons breakdown
-    veto_matches = db.query(MaterialMatch.veto).filter(MaterialMatch.veto != None).all()
+    veto_matches = db.query(MaterialMatch.veto).filter(MaterialMatch.veto.isnot(None)).all()
     veto_reasons = {}
     for (v,) in veto_matches:
         if isinstance(v, dict) and v.get("applied"):

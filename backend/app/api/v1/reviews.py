@@ -196,7 +196,7 @@ def list_review_queue(
                 review_status=m.review_status,
                 evidence=ev_dtos,
                 fingerprints={"ruleset": "v1"},
-                review_details=_build_review_details(db, m.id) if m.review_status != "PENDING" else None
+                review_details=_build_review_details(db, m.id) if m.review_status not in ["PROPOSED", "PENDING"] else None
             )
         )
 
