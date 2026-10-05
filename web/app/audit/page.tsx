@@ -91,6 +91,7 @@ export default function AuditPage() {
 
   useEffect(() => {
     fetchAuditEvents();
+    handleVerifyChain();
   }, [token]);
 
   return (
@@ -270,8 +271,8 @@ export default function AuditPage() {
 
       {/* JSON Inspector Modal */}
       {selectedEvent && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(2px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
-          <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '650px', maxHeight: '80vh', overflowY: 'auto', boxShadow: tokens.shadows.lg }}>
+        <div className="modal-backdrop-smooth" style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
+          <div className="animate-scale-up" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '650px', maxHeight: '80vh', overflowY: 'auto', boxShadow: tokens.shadows.lg }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <h3 style={{ margin: 0, color: tokens.colors.textPrimary, fontSize: '1.15rem', fontWeight: 800 }}>
                 Audit Event Inspector — Sequence #{selectedEvent.seq}

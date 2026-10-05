@@ -65,8 +65,20 @@ class MockSapAdapter:
         exported_records: List[Dict[str, Any]] = []
         category_counts: Dict[str, int] = {}
 
+        # Preload existing records to prevent race conditions or unique constraint collisions
+        existing_rows = db.query(SapMockMaterial).all()
+        by_nmc = {row.nmc: row for row in existing_rows}
+        by_matnr = {row.sap_product_id: row for row in existing_rows}
+
         for nm in national_materials:
-            sap_matnr = cls.derive_sap_matnr(nm)
+            base_matnr = cls.derive_sap_matnr(nm)
+            sap_matnr = base_matnr
+            # If base_matnr is already mapped to a different NMC, disambiguate with checksum or uid
+            if sap_matnr in by_matnr and by_matnr[sap_matnr].nmc != nm.nmc:
+                parts = nm.nmc.split("-")
+                suffix = parts[3] if len(parts) >= 4 else (nm.uid[:4] if nm.uid else "01")
+                sap_matnr = f"{base_matnr[:34]}-{suffix}"
+
             maktx = cls.truncate_description(nm.canonical_description)
 
             # Count mapped CPSE materials
@@ -111,11 +123,8 @@ class MockSapAdapter:
                 "SYNCED_AT": datetime.now(timezone.utc).isoformat()
             }
 
-
-            # Upsert into SapMockMaterial table (match on sap_product_id or nmc)
-            sap_row = db.query(SapMockMaterial).filter(
-                (SapMockMaterial.sap_product_id == sap_matnr) | (SapMockMaterial.nmc == nm.nmc)
-            ).first()
+            # Upsert into SapMockMaterial table with in-memory lookup cache
+            sap_row = by_nmc.get(nm.nmc) or by_matnr.get(sap_matnr)
             if not sap_row:
                 sap_row = SapMockMaterial(
                     id=str(generate_uuidv7()),
@@ -127,13 +136,16 @@ class MockSapAdapter:
                     created_at=datetime.now(timezone.utc)
                 )
                 db.add(sap_row)
+                by_nmc[nm.nmc] = sap_row
+                by_matnr[sap_matnr] = sap_row
             else:
                 sap_row.sap_product_id = sap_matnr
                 sap_row.nmc = nm.nmc
                 sap_row.product_description = maktx
                 sap_row.payload = payload
                 sap_row.status = "SYNCED"
-                db.add(sap_row)
+                by_nmc[nm.nmc] = sap_row
+                by_matnr[sap_matnr] = sap_row
 
             exported_records.append({
                 "sap_product_id": sap_matnr,

@@ -1121,8 +1121,8 @@ export default function MatchDetailInspector() {
 
       {/* Modal: Approve */}
       {showApproveModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(2px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
-          <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '500px', boxShadow: tokens.shadows.lg }}>
+        <div className="modal-backdrop-smooth" style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
+          <div className="animate-scale-up" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '500px', boxShadow: tokens.shadows.lg }}>
             <h3 style={{ margin: '0 0 0.5rem 0', color: tokens.colors.textPrimary, fontSize: '1.15rem', fontWeight: 800 }}>
               Confirm Equivalence Approval
             </h3>
@@ -1183,8 +1183,8 @@ export default function MatchDetailInspector() {
 
       {/* Modal: Reject */}
       {showRejectModal && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(2px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
-          <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '500px', boxShadow: tokens.shadows.lg }}>
+        <div className="modal-backdrop-smooth" style={{ position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
+          <div className="animate-scale-up" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.5rem', width: '90%', maxWidth: '500px', boxShadow: tokens.shadows.lg }}>
             <h3 style={{ margin: '0 0 0.5rem 0', color: tokens.colors.textPrimary, fontSize: '1.15rem', fontWeight: 800 }}>
               Reject Candidate Pair
             </h3>

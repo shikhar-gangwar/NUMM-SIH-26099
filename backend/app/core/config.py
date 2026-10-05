@@ -1,7 +1,8 @@
-import os
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
     APP_NAME: str = "National Unified Material Master Framework"
     ENV: str = "dev"
     DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/sih_master"
@@ -39,9 +40,6 @@ class Settings(BaseSettings):
     SIZE_TABLES_PATH: str = "config/size_tables.yaml"
     UOM_PATH: str = "config/uom.yaml"
     MATERIAL_ALIASES_PATH: str = "config/material_aliases.yaml"
-    
-    class Config:
-        env_file = ".env"
-        extra = "ignore"
 
 settings = Settings()
+

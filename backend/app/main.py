@@ -1,4 +1,5 @@
 import os
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.sql import text
@@ -9,24 +10,8 @@ from app.config_loader.loader import load_config_bundle
 from app.ai.providers.factory import get_embedding_provider, get_llm_provider
 from app.api.v1.router import api_v1_router
 
-app = FastAPI(
-    title="National Unified Material Master Framework API",
-    description="SIH 2026 PS 26099 Core Governance & Matching API",
-    version="0.1.0"
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(api_v1_router)
-
-@app.on_event("startup")
-def startup_db_and_config():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     # 0. Ensure pgvector extension exists for PostgreSQL
     if "postgresql" in str(engine.url):
         try:
@@ -79,6 +64,25 @@ def startup_db_and_config():
         print(f"Config registration warning: {e}", flush=True)
     finally:
         db.close()
+
+    yield
+
+app = FastAPI(
+    title="National Unified Material Master Framework API",
+    description="SIH 2026 PS 26099 Core Governance & Matching API",
+    version="2.9.0",
+    lifespan=lifespan
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(api_v1_router)
 
 @app.get("/health", tags=["System"])
 def health_check():
