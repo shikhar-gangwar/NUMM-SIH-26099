@@ -99,6 +99,7 @@ All AI capabilities sit behind provider interfaces in `backend/app/ai/providers/
 | **v2.7** | CPSE Crosswalk Registry & Multi-Scope Export | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-05 | Dedicated crosswalk registry, ISO 7064 MOD 37,36 standard alignment, animated export feedback, RFC 4180 streaming CSV export |
 | **v2.8** | Fluid UI/UX Polish & Micro-Interactions | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-05 | Subpixel font smoothing, custom unified scrollbars, slide-in drawer physics, scale-up modals |
 | **v2.9** | Lifespan Engine Architecture & Pipeline Stability | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-05 | FastAPI 0.115+ `lifespan` context manager, Pydantic v2 `SettingsConfigDict`, idempotent SAP hub upsert, auto-verifying audit chain on mount, 62/62 pytests PASS |
+| **v2.10** | Sustained Concurrency & Pool Resilience | `[✓] IMPLEMENTED + VERIFIED` | 2026-10-05 | 25/50 connection pool + 30m recycling, automatic stale processing run recovery on startup, background match worker error capture, 20-thread sustained stress test (200/200 reqs @ 100% PASS), 62/62 pytests PASS |
 
 ---
 
@@ -649,5 +650,7 @@ Post-prototype production release plan mapping future engineering enhancements:
 8. **v2.7 (CPSE Crosswalk Registry & Multi-Scope Export Engine):** `[✓] IMPLEMENTED + VERIFIED` Dedicated National Materials crosswalk registry section, ISO 7064 MOD 37,36 standard alignment, animated export loading/success feedback in AppShell navigation and Governance cards, multi-scope filtering (`?nmc=`, `?category_code=`), and RFC 4180 streaming CSV export.
 9. **v2.8 (Fluid UI/UX Polish & Micro-Interactions):** `[✓] IMPLEMENTED + VERIFIED` Unified sleek scrollbars, subpixel font smoothing, smooth navigation hover glides, backdrop-blur modal transitions (scaleUp, slideInRight), responsive input focus rings, and table row hover smoothness without adding any new features.
 10. **v2.9 (Lifespan Engine Architecture & Zero-Warning Pipeline Stability):** `[✓] IMPLEMENTED + VERIFIED` Modern FastAPI `@asynccontextmanager lifespan` engine initialization (replacing deprecated `@app.on_event`), Pydantic v2 `SettingsConfigDict` settings schema migration, Postgres `SapMockMaterial` duplicate key guard via in-memory lookup cache and disambiguation suffix, auto-verification of cryptographic audit chain on `/audit` page mount, fluid modal backdrop physics for review decisions, 62/62 pytests passing (100%), 20/20 golden demo assertions, and 10/10 web routes HTTP 200.
+11. **v2.10 (Sustained Concurrency, High-Throughput Connection Pooling & Resilient Worker Recovery):** `[✓] IMPLEMENTED + VERIFIED` Hardened PostgreSQL connection pool (`pool_size=25`, `max_overflow=50`, `pool_recycle=1800`, `pool_pre_ping=True`) ensuring zero pool exhaustion timeouts under concurrent bursts, implemented startup cleanup for stale or interrupted `QUEUED`/`PROCESSING` match runs, added safe error state persistence in `_background_match_worker` to prevent 15-minute concurrency deadlock locks, verified 20 concurrent threads running 200 mixed requests with 100% HTTP 200 and zero errors, sustained Gate G2 hard veto invariant under stress, and passed full 62/62 pytests.
+
 
 

@@ -154,6 +154,17 @@ def _background_match_worker(run_id: str, scope: dict, mode: str, user_id: str):
         )
     except Exception as exc:
         print(f"[MatchWorker Error] run {run_id} failed: {exc}", flush=True)
+        try:
+            run = worker_db.query(MatchRun).filter_by(id=run_id).first()
+            if run and run.status in ["QUEUED", "PROCESSING"]:
+                run.status = "FAILED"
+                run.finished_at = datetime.now(timezone.utc)
+                stats = dict(run.stats) if run.stats else {}
+                stats["error"] = str(exc)
+                run.stats = stats
+                worker_db.commit()
+        except Exception as e2:
+            print(f"[MatchWorker Error] Failed to record error state: {e2}", flush=True)
     finally:
         worker_db.close()
 
@@ -340,10 +351,12 @@ def list_matches(
         query = query.filter(MaterialMatch.equivalence_confidence >= min_conf)
 
     offset = (page - 1) * page_size
-    matches = query.order_by(MaterialMatch.created_at.desc()).offset(offset).limit(page_size).all()
+    matches = query.order_by(MaterialMatch.created_at.desc()).offset(offset).limit(page_size * 2).all()
 
     results = []
     for m in matches:
+        if len(results) >= page_size:
+            break
         if has_veto is True and not (m.veto and m.veto.get("applied")):
             continue
         if has_veto is False and (m.veto and m.veto.get("applied")):

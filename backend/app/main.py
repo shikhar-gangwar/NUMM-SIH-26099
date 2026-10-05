@@ -60,6 +60,21 @@ async def lifespan(app: FastAPI):
             ))
             db.commit()
             print("Demo seed user 'reviewer_demo' created.", flush=True)
+
+        # 5. Clean up any stale QUEUED or PROCESSING match runs from prior server sessions
+        from app.db.models import MatchRun
+        from datetime import datetime, timezone
+        stale_runs = db.query(MatchRun).filter(MatchRun.status.in_(["QUEUED", "PROCESSING"])).all()
+        if stale_runs:
+            now_dt = datetime.now(timezone.utc)
+            for r in stale_runs:
+                r.status = "CANCELLED"
+                r.finished_at = now_dt
+                stats = dict(r.stats) if r.stats else {}
+                stats["error"] = "Process terminated due to server shutdown/restart"
+                r.stats = stats
+            db.commit()
+            print(f"Cleaned up {len(stale_runs)} stale match run(s) from prior session.", flush=True)
     except Exception as e:
         print(f"Config registration warning: {e}", flush=True)
     finally:
@@ -70,7 +85,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="National Unified Material Master Framework API",
     description="SIH 2026 PS 26099 Core Governance & Matching API",
-    version="2.9.0",
+    version="2.10.0",
     lifespan=lifespan
 )
 

@@ -39,7 +39,6 @@ def _build_material_dict(db: Session, material: Material) -> dict:
         canon, dim, flags = normalize_uom(material.raw_uom)
         material.uom_canonical = canon
         material.uom_dimension = dim or "UNKNOWN"
-        material.uom_dimension = dim
         db.add(material)
 
     # 2. Category classification
