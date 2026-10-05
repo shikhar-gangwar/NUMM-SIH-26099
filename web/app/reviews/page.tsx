@@ -485,6 +485,7 @@ export default function ReviewsPage() {
             return (
               <div
                 key={match.id}
+                className="interactive-card animate-fade-in"
                 style={{
                   background: tokens.colors.surface,
                   border: `1px solid ${cardBorder}`,
@@ -495,7 +496,7 @@ export default function ReviewsPage() {
                   alignItems: 'center',
                   gap: '1.5rem',
                   boxShadow: tokens.shadows.sm,
-                  transition: 'border-color 0.2s, box-shadow 0.2s'
+                  transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s'
                 }}
               >
                 {/* Left Side: Side-by-Side Materials */}

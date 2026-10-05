@@ -58,29 +58,36 @@ export default function DemoModeModal({ isOpen, onClose, onOpenMatchModal }: Dem
   const safeEquiv = scenarios?.safe_equivalent;
 
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      background: isDark ? 'rgba(0, 0, 0, 0.70)' : 'rgba(15, 23, 42, 0.65)',
-      backdropFilter: 'blur(6px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 70,
-      padding: '1.5rem'
-    }}>
-      <div style={{
-        background: 'var(--surface-1)',
-        border: '1px solid var(--border)',
-        borderRadius: '0.75rem',
-        width: '100%',
-        maxWidth: '860px',
-        maxHeight: '90vh',
-        boxShadow: isDark ? '0 25px 50px -12px rgba(0, 0, 0, 0.8)' : '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+    <div 
+      className="modal-backdrop-smooth"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: isDark ? 'rgba(0, 0, 0, 0.70)' : 'rgba(15, 23, 42, 0.65)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden'
-      }}>
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 70,
+        padding: '1.5rem'
+      }}
+    >
+      <div 
+        className="animate-scale-up"
+        style={{
+          background: 'var(--surface-1)',
+          border: '1px solid var(--border)',
+          borderRadius: '0.75rem',
+          width: '100%',
+          maxWidth: '860px',
+          maxHeight: '90vh',
+          boxShadow: isDark ? '0 25px 50px -12px rgba(0, 0, 0, 0.8)' : '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden'
+        }}
+      >
         {/* Modal Header */}
         <div style={{
           padding: '1.25rem 1.5rem',

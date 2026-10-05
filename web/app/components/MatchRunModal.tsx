@@ -213,26 +213,33 @@ export default function MatchRunModal({ isOpen, onClose, onComplete }: MatchRunM
   const progressPct = stats?.progress_pct ?? (currentRun?.status === 'COMPLETED' ? 100 : 0);
 
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'rgba(2, 6, 23, 0.7)',
-      backdropFilter: 'blur(5px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 50,
-      padding: '1rem'
-    }}>
-      <div style={{
-        background: tokens.colors.surface,
-        border: `1px solid ${tokens.colors.border}`,
-        borderRadius: '0.75rem',
-        width: '100%',
-        maxWidth: '680px',
-        boxShadow: tokens.shadows.lg,
-        overflow: 'hidden'
-      }}>
+    <div 
+      className="modal-backdrop-smooth"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(2, 6, 23, 0.7)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 50,
+        padding: '1rem'
+      }}
+    >
+      <div 
+        className="animate-scale-up"
+        style={{
+          background: tokens.colors.surface,
+          border: `1px solid ${tokens.colors.border}`,
+          borderRadius: '0.75rem',
+          width: '100%',
+          maxWidth: '680px',
+          boxShadow: tokens.shadows.lg,
+          overflow: 'hidden'
+        }}
+      >
         {/* Header */}
         <div style={{
           padding: '1.25rem 1.5rem',

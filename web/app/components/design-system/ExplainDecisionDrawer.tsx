@@ -111,27 +111,34 @@ export default function ExplainDecisionDrawer({ isOpen, onClose, match }: Explai
   ];
 
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      zIndex: 100,
-      background: 'rgba(15, 23, 42, 0.65)',
-      backdropFilter: 'blur(4px)',
-      display: 'flex',
-      justifyContent: 'flex-end',
-      transition: 'all 0.2s'
-    }}>
-      <div style={{
-        width: '100%',
-        maxWidth: '540px',
-        height: '100%',
-        background: 'var(--surface-1)',
-        borderLeft: '1px solid var(--border)',
-        boxShadow: tokens.shadows.lg,
+    <div 
+      className="modal-backdrop-smooth"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100,
+        background: 'rgba(15, 23, 42, 0.65)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden'
-      }}>
+        justifyContent: 'flex-end',
+        transition: 'all 0.2s'
+      }}
+    >
+      <div 
+        className="animate-slide-in-right"
+        style={{
+          width: '100%',
+          maxWidth: '540px',
+          height: '100%',
+          background: 'var(--surface-1)',
+          borderLeft: '1px solid var(--border)',
+          boxShadow: tokens.shadows.lg,
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden'
+        }}
+      >
         {/* Drawer Header */}
         <div style={{
           padding: '1.25rem 1.5rem',

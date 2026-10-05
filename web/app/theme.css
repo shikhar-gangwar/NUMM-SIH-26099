@@ -103,10 +103,34 @@
 /* BASE RESETS & GLOBAL THEME APPLICATION                                    */
 /* ========================================================================= */
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 html, body {
   background-color: var(--background);
   color: var(--text-primary);
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sleek Unified Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
 [data-theme='dark'] body,
@@ -438,4 +462,96 @@ button:active {
   filter: brightness(1.15);
   transform: scaleX(1.02);
 }
+
+/* ========================================================================= */
+/* EXTENDED FLUID MICRO-INTERACTIONS & SMOOTHNESS                            */
+/* ========================================================================= */
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmerPulse {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth Interactive Inputs & Selects */
+input, select, textarea {
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-soft) !important;
+}
+
+/* Sidebar Nav Link Micro-Interaction */
+.nav-link-btn {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-link-btn:hover:not(.nav-link-active) {
+  background-color: var(--surface-2) !important;
+  color: var(--text-primary) !important;
+  transform: translateX(3px);
+}
+
+/* Table Row Smooth Hover */
+table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+table tbody tr:hover {
+  background-color: var(--surface-2);
+}
+
+/* Modal Backdrop Blur Transition */
+.modal-backdrop-smooth {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.22s ease-out;
+}
+
+/* Interactive Badge Pulse on Hover */
+.badge-interactive {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s ease;
+}
+
+.badge-interactive:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
 

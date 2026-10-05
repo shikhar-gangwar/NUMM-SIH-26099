@@ -407,6 +407,7 @@ export default function AppShell({ children }: AppShellProps) {
                     <button
                       key={item.href}
                       onClick={() => router.push(item.href)}
+                      className={`nav-link-btn ${isActive ? 'nav-link-active' : ''}`}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -420,7 +421,6 @@ export default function AppShell({ children }: AppShellProps) {
                         fontWeight: isActive ? 700 : 500,
                         cursor: 'pointer',
                         textAlign: 'left',
-                        transition: 'all 0.15s',
                         borderLeft: isActive ? activeBorder : '3px solid transparent'
                       }}
                     >

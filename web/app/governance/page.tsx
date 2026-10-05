@@ -479,14 +479,16 @@ export default function GovernancePage() {
         {kpiCards.map((kpi, idx) => {
           const Icon = kpi.icon;
           return (
-            <div key={idx} style={{
-              background: tokens.colors.surface,
-              border: `1px solid ${tokens.colors.border}`,
-              borderRadius: '0.75rem',
-              padding: '1.15rem 1.25rem',
-              boxShadow: tokens.shadows.card,
-              transition: 'box-shadow 0.15s'
-            }}>
+            <div key={idx} 
+              className="interactive-card animate-fade-in"
+              style={{
+                background: tokens.colors.surface,
+                border: `1px solid ${tokens.colors.border}`,
+                borderRadius: '0.75rem',
+                padding: '1.15rem 1.25rem',
+                boxShadow: tokens.shadows.card,
+                transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, color: tokens.colors.textMuted }}>{kpi.title}</span>
                 <div style={{ width: '32px', height: '32px', borderRadius: '0.375rem', background: kpi.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: kpi.color }}>

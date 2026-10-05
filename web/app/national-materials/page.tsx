@@ -515,13 +515,14 @@ export default function NationalMaterialsPage() {
             return (
               <div
                 key={nat.uid}
+                className="interactive-card animate-fade-in"
                 style={{
                   background: tokens.colors.surface,
                   border: `1px solid ${tokens.colors.border}`,
                   borderRadius: '0.75rem',
                   padding: '1.25rem',
                   boxShadow: tokens.shadows.sm,
-                  transition: 'box-shadow 0.2s'
+                  transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
               >
                 {/* Header Row */}

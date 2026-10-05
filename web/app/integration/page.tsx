@@ -245,19 +245,22 @@ export default function IntegrationPage() {
       </div>
 
       {syncSuccessMsg && (
-        <div style={{
-          marginBottom: '1.5rem',
-          padding: '0.85rem 1.25rem',
-          background: '#DCFCE7',
-          border: '1px solid #BBF7D0',
-          borderRadius: '0.5rem',
-          color: tokens.colors.primary,
-          fontSize: '0.875rem',
-          fontWeight: 700,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem'
-        }}>
+        <div 
+          className="animate-fade-in"
+          style={{
+            marginBottom: '1.5rem',
+            padding: '0.85rem 1.25rem',
+            background: '#DCFCE7',
+            border: '1px solid #BBF7D0',
+            borderRadius: '0.5rem',
+            color: tokens.colors.primary,
+            fontSize: '0.875rem',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}
+        >
           <CheckCircle2 style={{ width: '18px', height: '18px', flexShrink: 0 }} />
           <span>{syncSuccessMsg}</span>
         </div>
@@ -270,7 +273,7 @@ export default function IntegrationPage() {
         gap: '1.25rem',
         marginBottom: '1.5rem'
       }}>
-        <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm }}>
+        <div className="interactive-card animate-fade-in" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm, transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: tokens.colors.textSecondary }}>ADAPTER STATUS</span>
             <Server style={{ width: '18px', height: '18px', color: tokens.colors.success }} />
@@ -283,7 +286,7 @@ export default function IntegrationPage() {
           </span>
         </div>
 
-        <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm }}>
+        <div className="interactive-card animate-fade-in" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm, transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: tokens.colors.textSecondary }}>TOTAL MATERIALS IN SAP</span>
             <Database style={{ width: '18px', height: '18px', color: tokens.colors.teal }} />
@@ -294,7 +297,7 @@ export default function IntegrationPage() {
           <span style={{ fontSize: '0.75rem', color: tokens.colors.textSecondary }}>Synchronized Master Records</span>
         </div>
 
-        <div style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm }}>
+        <div className="interactive-card animate-fade-in" style={{ background: tokens.colors.surface, border: `1px solid ${tokens.colors.border}`, borderRadius: '0.75rem', padding: '1.25rem', boxShadow: tokens.shadows.sm, transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: tokens.colors.textSecondary }}>DESCRIPTION CONSTRAINT</span>
             <Cpu style={{ width: '18px', height: '18px', color: tokens.colors.warning }} />
