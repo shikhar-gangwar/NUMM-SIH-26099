@@ -117,7 +117,7 @@ def run_verification():
     # 10. Crosswalk Export
     req = urllib.request.Request(f"{api_base}/api/v1/exports/crosswalk.csv", headers=auth_headers)
     with urllib.request.urlopen(req) as res:
-        crosswalk_csv = res.read().decode()
+        crosswalk_csv = res.read().decode("utf-8-sig")
         lines = crosswalk_csv.strip().splitlines()
         print(f"[PASS] Crosswalk CSV Export: Generated {len(lines)} lines (Header: {lines[0]})")
         

@@ -149,6 +149,7 @@ class GovernanceService:
                 mappings.append(existing_leg)
 
         # 5. Update MaterialMatch review status
+        old_status = match.review_status
         match.review_status = "APPROVED"
         db.add(match)
 
@@ -176,7 +177,7 @@ class GovernanceService:
             entity_type="material_match",
             entity_id=match_id,
             actor_id=user_id,
-            before={"review_status": "PROPOSED"},
+            before={"review_status": old_status},
             after={"review_status": "APPROVED", "nmc": nat_mat.nmc, "national_uid": nat_mat.uid},
             reason=f"Approved match pair {mat_a.source_code} <-> {mat_b.source_code}, assigned NMC {nat_mat.nmc}."
         )
@@ -199,6 +200,7 @@ class GovernanceService:
         if not match:
             raise NotFoundException(f"Match record '{match_id}' not found")
 
+        old_status = match.review_status
         match.review_status = "REJECTED"
         db.add(match)
 
@@ -224,7 +226,7 @@ class GovernanceService:
             entity_type="material_match",
             entity_id=match_id,
             actor_id=user_id,
-            before={"review_status": match.review_status},
+            before={"review_status": old_status},
             after={"review_status": "REJECTED", "reason_code": reason_code},
             reason=f"Rejected match pair. Reason: {reason_code}. Comment: {comment or 'None'}"
         )
@@ -271,6 +273,7 @@ class GovernanceService:
         )
         db.add(leg_row)
 
+        old_status = match.review_status
         match.review_status = "APPROVED"
         db.add(match)
 
@@ -296,6 +299,7 @@ class GovernanceService:
             entity_type="material_match",
             entity_id=match_id,
             actor_id=user_id,
+            before={"review_status": old_status, "previous_national_uid": existing_leg.national_material_uid if existing_leg else None},
             after={"target_nmc": nat_mat.nmc, "target_uid": nat_mat.uid},
             reason=f"Remapped material {mat_a.source_code} to NMC {nat_mat.nmc}. Reason: {reason or 'Steward modification'}"
         )

@@ -83,7 +83,7 @@ def export_crosswalk_csv(
             leg.status
         ])
 
-    csv_content = output.getvalue()
+    csv_content = "\ufeff" + output.getvalue()
     ts = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
     if nmc:
         clean_nmc = nmc.replace("-", "_").replace(" ", "")

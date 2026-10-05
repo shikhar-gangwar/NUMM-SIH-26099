@@ -89,6 +89,7 @@ export default function AppShell({ children }: AppShellProps) {
         document.body.appendChild(a);
         a.click();
         a.remove();
+        window.URL.revokeObjectURL(url);
         setExportSuccess(true);
         setTimeout(() => setExportSuccess(false), 2500);
       } else {

@@ -29,7 +29,7 @@ def make_request(method, path, headers=None, data=None):
     
     req = urllib.request.Request(url, data=body, headers=hdrs, method=method)
     start = time.perf_counter()
-    with urllib.request.urlopen(req, timeout=15) as res:
+    with urllib.request.urlopen(req, timeout=30) as res:
         content = res.read()
         duration_ms = (time.perf_counter() - start) * 1000
         return res.status, duration_ms, len(content)

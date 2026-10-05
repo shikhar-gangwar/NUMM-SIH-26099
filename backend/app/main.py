@@ -85,7 +85,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="National Unified Material Master Framework API",
     description="SIH 2026 PS 26099 Core Governance & Matching API",
-    version="2.10.0",
+    version="2.11.0",
     lifespan=lifespan
 )
 

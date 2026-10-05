@@ -118,6 +118,7 @@ export default function GovernancePage() {
         document.body.appendChild(a);
         a.click();
         a.remove();
+        window.URL.revokeObjectURL(url);
       } else {
         alert(`Failed to export crosswalk (HTTP ${response.status})`);
       }

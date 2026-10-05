@@ -95,6 +95,7 @@ export default function NationalMaterialsPage() {
         document.body.appendChild(a);
         a.click();
         a.remove();
+        window.URL.revokeObjectURL(blobUrl);
 
         const successText = targetNmc
           ? `Downloaded crosswalk for ${targetNmc}`
