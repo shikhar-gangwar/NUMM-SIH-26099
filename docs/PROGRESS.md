@@ -36,6 +36,8 @@
 
 ```
 Current Version:                    v2.11 (Audit Provenance & Export Standardization)
+Latest Stabilization Patch:         b97af01 (Null-Safe Triggers, N+1 Query Optimization & DTO Alignment)
+Release Status:                     STABLE
 Previous Release Baseline:          v2.10 (Sustained Concurrency & Pool Resilience)
 Overall Engineering Completion:     100.0%
 SIH Prototype Readiness:           100.0%  (All 20/20 golden demo steps verified)
