@@ -1,0 +1,7 @@
+{
+  "material_id": "M000073",
+  "normalized_text": "AUTOMATIC MULTIPURPOSE REACTOR SYSTEM",
+  "text_hash": "b64810f61695b14dfd846d2dba76953b244c5775c6ad3f005eb41fbe675218ea",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.587514+00:00"
+}

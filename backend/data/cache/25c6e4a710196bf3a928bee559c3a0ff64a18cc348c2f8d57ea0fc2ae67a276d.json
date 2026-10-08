@@ -1,0 +1,7 @@
+{
+  "material_id": "M000047",
+  "normalized_text": "ACRYLIC PLATES",
+  "text_hash": "25c6e4a710196bf3a928bee559c3a0ff64a18cc348c2f8d57ea0fc2ae67a276d",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.235056+00:00"
+}

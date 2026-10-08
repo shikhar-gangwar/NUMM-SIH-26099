@@ -1,0 +1,7 @@
+{
+  "material_id": "M002579",
+  "normalized_text": "100 MM FLANGES",
+  "text_hash": "176d328c003ef6ba05ce294a734893d58fad35752c111316af372cf8fccf8f24",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.037756+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M002564",
+  "normalized_text": "1 TRANSPORE 5 CM",
+  "text_hash": "da56a8b3b263951376ff800417f8532e986a7fdd3da40bc42a2626c34166414c",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:13.440770+00:00"
+}

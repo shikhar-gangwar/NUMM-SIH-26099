@@ -1,0 +1,7 @@
+{
+  "material_id": null,
+  "normalized_text": "BEARING 6308 C3 BALL BEARING",
+  "text_hash": "a9c792af4ce448f5c7be4d93a6c572f220916b0c26f885c48ac19cabf0cbb7bf",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:33:28.200727+00:00"
+}

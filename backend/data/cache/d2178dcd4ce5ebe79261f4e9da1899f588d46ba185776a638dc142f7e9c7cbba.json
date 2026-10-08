@@ -1,0 +1,7 @@
+{
+  "material_id": "M002565",
+  "normalized_text": "03 YEARS ANNUAL MAINTENANCE CONTRACT FOR 02 NOS OF UPS INSTALLED AT COEES",
+  "text_hash": "d2178dcd4ce5ebe79261f4e9da1899f588d46ba185776a638dc142f7e9c7cbba",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.715699+00:00"
+}

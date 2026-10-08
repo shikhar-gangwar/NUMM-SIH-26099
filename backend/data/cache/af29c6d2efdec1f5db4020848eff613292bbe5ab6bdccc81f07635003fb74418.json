@@ -1,0 +1,7 @@
+{
+  "material_id": "M000023",
+  "normalized_text": "6038 6017",
+  "text_hash": "af29c6d2efdec1f5db4020848eff613292bbe5ab6bdccc81f07635003fb74418",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.251816+00:00"
+}

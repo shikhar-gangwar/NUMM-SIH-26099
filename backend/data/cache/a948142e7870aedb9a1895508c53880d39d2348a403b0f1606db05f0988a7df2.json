@@ -1,0 +1,7 @@
+{
+  "material_id": "M000025",
+  "normalized_text": "608 TEST BEARINGS",
+  "text_hash": "a948142e7870aedb9a1895508c53880d39d2348a403b0f1606db05f0988a7df2",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.325605+00:00"
+}

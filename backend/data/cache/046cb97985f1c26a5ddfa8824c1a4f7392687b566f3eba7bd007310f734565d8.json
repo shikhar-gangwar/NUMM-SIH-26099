@@ -1,0 +1,7 @@
+{
+  "material_id": "M002578",
+  "normalized_text": "100 HP FLP AC INDUCTION MOTOR",
+  "text_hash": "046cb97985f1c26a5ddfa8824c1a4f7392687b566f3eba7bd007310f734565d8",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.988015+00:00"
+}

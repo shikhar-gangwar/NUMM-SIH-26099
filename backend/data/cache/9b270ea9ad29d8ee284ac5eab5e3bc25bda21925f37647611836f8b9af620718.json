@@ -1,0 +1,7 @@
+{
+  "material_id": "M001789",
+  "normalized_text": "HYDRATED LIME",
+  "text_hash": "9b270ea9ad29d8ee284ac5eab5e3bc25bda21925f37647611836f8b9af620718",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.374809+00:00"
+}

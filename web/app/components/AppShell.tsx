@@ -34,12 +34,14 @@ export default function AppShell({ children }: AppShellProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportSuccess, setExportSuccess] = useState(false);
 
   useEffect(() => {
     if (!isLoading && !token) {
-      router.push('/login');
+      window.location.href = '/login';
     }
-  }, [isLoading, token, router]);
+  }, [isLoading, token]);
 
   if (isLoading) {
     return (
@@ -56,12 +58,9 @@ export default function AppShell({ children }: AppShellProps) {
     return null;
   }
 
-  const [isExporting, setIsExporting] = useState(false);
-  const [exportSuccess, setExportSuccess] = useState(false);
-
   const handleLogout = () => {
     logout();
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   const handleExportCSV = async () => {

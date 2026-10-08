@@ -1,0 +1,7 @@
+{
+  "material_id": "M000742",
+  "normalized_text": "RATE CONTRACT FOR PAN NTPC",
+  "text_hash": "e257aaf9ebc517350ac1e236c9a9c8fcfdbc4d2b7c31bb7bec355a01f1762b6a",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.492128+00:00"
+}

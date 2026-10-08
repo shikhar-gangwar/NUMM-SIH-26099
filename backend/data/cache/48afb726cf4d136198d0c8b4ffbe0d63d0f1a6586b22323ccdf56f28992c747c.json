@@ -1,0 +1,7 @@
+{
+  "material_id": "M000728",
+  "normalized_text": "CONSTRUCTION OF ROAD FROM NTPC",
+  "text_hash": "48afb726cf4d136198d0c8b4ffbe0d63d0f1a6586b22323ccdf56f28992c747c",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.390458+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000045",
+  "normalized_text": "ATF MEROX CATALYST - PRE IMPREGNATED ACTIVATED CHARCOAL",
+  "text_hash": "f2d573080f92ea4363d6115ecb87a1e9e9b24143860a1a3e2b8589695a4af530",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.086588+00:00"
+}

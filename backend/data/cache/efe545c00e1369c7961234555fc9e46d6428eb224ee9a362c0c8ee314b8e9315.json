@@ -1,0 +1,7 @@
+{
+  "material_id": "M001023",
+  "normalized_text": "XLPE CABLE FOR WORKING VOLTAGES UP TO AND INCLUDING 1.1 KV",
+  "text_hash": "efe545c00e1369c7961234555fc9e46d6428eb224ee9a362c0c8ee314b8e9315",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.641748+00:00"
+}

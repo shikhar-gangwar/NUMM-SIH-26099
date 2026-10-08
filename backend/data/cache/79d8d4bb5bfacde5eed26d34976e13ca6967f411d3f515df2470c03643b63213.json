@@ -1,0 +1,7 @@
+{
+  "material_id": "M000733",
+  "normalized_text": "EXPRESSION OF INTEREST FOR DEPLOYMENT",
+  "text_hash": "79d8d4bb5bfacde5eed26d34976e13ca6967f411d3f515df2470c03643b63213",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.837896+00:00"
+}

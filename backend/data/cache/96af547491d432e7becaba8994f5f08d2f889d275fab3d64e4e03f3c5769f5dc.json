@@ -1,0 +1,7 @@
+{
+  "material_id": null,
+  "normalized_text": "TEST MATERIAL ITEM 8 M16 X 70 GRADE 10.9 SS316",
+  "text_hash": "96af547491d432e7becaba8994f5f08d2f889d275fab3d64e4e03f3c5769f5dc",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:50:48.829761+00:00"
+}

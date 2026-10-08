@@ -1,0 +1,7 @@
+{
+  "material_id": "M000737",
+  "normalized_text": "ISSUE OF DRY FLY ASH FROM NTPC SIPAT",
+  "text_hash": "8401ec5715782b5d735380257ff0fa82a030935605fe6c709b8e50956cd7dce8",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.099516+00:00"
+}

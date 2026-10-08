@@ -1,0 +1,7 @@
+{
+  "material_id": "M000735",
+  "normalized_text": "IDENTIFICATION OF VENDORS FOR DESIGN MANUFACTURE SUPPLY ERECTION",
+  "text_hash": "c8d21faf3bdd440877baa47150a7a91463cf4e8817286e7ff36c0c1cf3299405",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.012837+00:00"
+}

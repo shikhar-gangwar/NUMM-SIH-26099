@@ -1,0 +1,7 @@
+{
+  "material_id": "M002586",
+  "normalized_text": "12 V BATTERY OPERATED HSD HIGH SPEED DIESEL OIL FILLING ELECTRIC PUMP",
+  "text_hash": "1e703f8cdae42d39b6fb53a25d24db55f45ca80ffeb7441cea6607109c549c11",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.550814+00:00"
+}

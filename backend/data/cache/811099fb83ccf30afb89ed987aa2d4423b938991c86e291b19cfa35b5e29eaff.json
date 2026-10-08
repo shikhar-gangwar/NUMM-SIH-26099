@@ -1,0 +1,7 @@
+{
+  "material_id": "M002572",
+  "normalized_text": "1.5 HP VERTICAL SUBMERSIBLE PUMPS",
+  "text_hash": "811099fb83ccf30afb89ed987aa2d4423b938991c86e291b19cfa35b5e29eaff",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.427500+00:00"
+}

@@ -1,0 +1,432 @@
+[
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anitoxidant AO 3114(1,3,5- Tris(3,5-di-tert-butyl-4- hydroxy benzyl)-s-triazine- 2,4,6-(1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "description_b": "Anitoxidant AO 3114(1,3,5-Tris(3,5-di- tert-butyl-4-hydroxy benzyl)-s-triazine-2,4,6- (1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "normalized_a": "ANITOXIDANT AO 3114 1 3 5- TRIS 3 5-DI-TERT-BUTYL-4- HYDROXY BENZYL -S-TRIAZINE- 2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "normalized_b": "ANITOXIDANT AO 3114 1 3 5-TRIS 3 5-DI- TERT-BUTYL-4-HYDROXY BENZYL -S-TRIAZINE-2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "cosine_similarity": 1.0000001192092896,
+    "attributes_a": {
+      "grade": "ADE"
+    },
+    "attributes_b": {
+      "grade": "ADE"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 1
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Antioxidant (AO-1330 ) - prevents polymer from degradation caused by exposure to heat, ultraviolet radiation (UV) and mechanical shear",
+    "description_b": "Antioxidant (AO-1330 ) -prevents polymer from degradation caused by exposure to heat, ultraviolet radiation (UV) and mechanical shear",
+    "normalized_a": "ANTIOXIDANT AO-1330 - PREVENTS POLYMER FROM DEGRADATION CAUSED BY EXPOSURE TO HEAT ULTRAVIOLET RADIATION UV AND MECHANICAL SHEAR",
+    "normalized_b": "ANTIOXIDANT AO-1330 -PREVENTS POLYMER FROM DEGRADATION CAUSED BY EXPOSURE TO HEAT ULTRAVIOLET RADIATION UV AND MECHANICAL SHEAR",
+    "cosine_similarity": 1.0000001192092896,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 2
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert - butyl-4-hydroxy phenyl)-propionate",
+    "description_b": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert -butyl-4- hydroxy phenyl)- propionate",
+    "normalized_a": "AO1076 OCTADECYL 3 5-DI- TERT - BUTYL-4-HYDROXY PHENYL -PROPIONATE",
+    "normalized_b": "AO1076 OCTADECYL 3 5-DI- TERT -BUTYL-4- HYDROXY PHENYL - PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 3
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert - butyl-4-hydroxy phenyl)-propionate",
+    "description_b": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert -butyl-4-hydroxy phenyl)- propionate",
+    "normalized_a": "AO1076 OCTADECYL 3 5-DI- TERT - BUTYL-4-HYDROXY PHENYL -PROPIONATE",
+    "normalized_b": "AO1076 OCTADECYL 3 5-DI- TERT -BUTYL-4-HYDROXY PHENYL - PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 4
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert -butyl-4- hydroxy phenyl)- propionate",
+    "description_b": "AO1076 (Octadecyl \u03b2 \u2013 (3,5-di- tert -butyl-4-hydroxy phenyl)- propionate",
+    "normalized_a": "AO1076 OCTADECYL 3 5-DI- TERT -BUTYL-4- HYDROXY PHENYL - PROPIONATE",
+    "normalized_b": "AO1076 OCTADECYL 3 5-DI- TERT -BUTYL-4-HYDROXY PHENYL - PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 5
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5- di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5- DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 6
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5-di- tert-butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI- TERT-BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 7
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5- di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5-di- tert-butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5- DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI- TERT-BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 1.0,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 8
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "1599+3001/1543+460 1",
+    "description_b": "1599+3001/1543+4601",
+    "normalized_a": "1599 3001 1543 460 1",
+    "normalized_b": "1599 3001 1543 4601",
+    "cosine_similarity": 0.9950897693634033,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 9
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionat e)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONAT E",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 0.9731544852256775,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 10
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionat e)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5- di-tert- butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONAT E",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5- DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 0.9731544852256775,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 11
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3- (3,5-di-tert- butyl-4- hydroxyphenyl)propionat e)",
+    "description_b": "Anti Oxidant (AO 1010) Pentaerythritol tetrakis(3-(3,5-di- tert-butyl-4- hydroxyphenyl)propionate)",
+    "normalized_a": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONAT E",
+    "normalized_b": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI- TERT-BUTYL-4- HYDROXYPHENYL PROPIONATE",
+    "cosine_similarity": 0.9731544852256775,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 12
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anitoxidant AO 3114(1,3,5- Tris(3,5-di-tert-butyl-4- hydroxy benzyl)-s-triazine- 2,4,6-(1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "description_b": "Antioxidant AO 3114(1,3,5-Tris(3,5- di-tert-butyl-4-hydroxy benzyl)-s- triazine-2,4,6-(1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "normalized_a": "ANITOXIDANT AO 3114 1 3 5- TRIS 3 5-DI-TERT-BUTYL-4- HYDROXY BENZYL -S-TRIAZINE- 2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "normalized_b": "ANTIOXIDANT AO 3114 1 3 5-TRIS 3 5- DI-TERT-BUTYL-4-HYDROXY BENZYL -S- TRIAZINE-2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "cosine_similarity": 0.9118549823760986,
+    "attributes_a": {
+      "grade": "ADE"
+    },
+    "attributes_b": {
+      "grade": "ADE"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 13
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Anitoxidant AO 3114(1,3,5-Tris(3,5-di- tert-butyl-4-hydroxy benzyl)-s-triazine-2,4,6- (1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "description_b": "Antioxidant AO 3114(1,3,5-Tris(3,5- di-tert-butyl-4-hydroxy benzyl)-s- triazine-2,4,6-(1H,3H,5H)trione) - specialized vis- breaking chemical used for speci fic PP grade",
+    "normalized_a": "ANITOXIDANT AO 3114 1 3 5-TRIS 3 5-DI- TERT-BUTYL-4-HYDROXY BENZYL -S-TRIAZINE-2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "normalized_b": "ANTIOXIDANT AO 3114 1 3 5-TRIS 3 5- DI-TERT-BUTYL-4-HYDROXY BENZYL -S- TRIAZINE-2 4 6- 1H 3H 5H TRIONE - SPECIALIZED VIS- BREAKING CHEMICAL USED FOR SPECI FIC PP GRADE",
+    "cosine_similarity": 0.9118549823760986,
+    "attributes_a": {
+      "grade": "ADE"
+    },
+    "attributes_b": {
+      "grade": "ADE"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 14
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "ATF (Aviation Turbine fuel) Merox catalyst \u2013 Pre impregnated activated charcoal",
+    "description_b": "ATF Merox Catalyst - Pre impregnated activated charcoal",
+    "normalized_a": "ATF AVIATION TURBINE FUEL MEROX CATALYST PRE IMPREGNATED ACTIVATED CHARCOAL",
+    "normalized_b": "ATF MEROX CATALYST - PRE IMPREGNATED ACTIVATED CHARCOAL",
+    "cosine_similarity": 0.9031194448471069,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 15
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "14.2 Kg Cylinders (Including New & Replacement)",
+    "description_b": "19 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "14.2 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "19 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8898283839225769,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 16
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "6038/6017",
+    "description_b": "6038/6102",
+    "normalized_a": "6038 6017",
+    "normalized_b": "6038 6102",
+    "cosine_similarity": 0.887060284614563,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 17
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "47.5 Kg Cylinders (Including New & Replacement)",
+    "description_b": "5 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "47.5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8812159299850464,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 18
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "API 6D Ball Valves (Nos)",
+    "description_b": "API 6D Valves (Nos)",
+    "normalized_a": "API 6D BALL VALVES NOS",
+    "normalized_b": "API 6D VALVES NOS",
+    "cosine_similarity": 0.8783470392227173,
+    "attributes_a": {
+      "uom": "NOS"
+    },
+    "attributes_b": {
+      "uom": "NOS"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 19
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "14.2 Kg Cylinders (Including New & Replacement)",
+    "description_b": "47.5 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "14.2 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "47.5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8771290183067322,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 20
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "1599/1613",
+    "description_b": "1617/1585+1621",
+    "normalized_a": "1599 1613",
+    "normalized_b": "1617 1585 1621",
+    "cosine_similarity": 0.8506033420562744,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 21
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "19 Kg Cylinders (Including New & Replacement)",
+    "description_b": "47.5 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "19 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "47.5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8475303649902344,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 22
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "14.2 Kg Cylinders (Including New & Replacement)",
+    "description_b": "5 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "14.2 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8361325263977051,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 23
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "6012/6015",
+    "description_b": "6038/6017",
+    "normalized_a": "6012 6015",
+    "normalized_b": "6038 6017",
+    "cosine_similarity": 0.8308833837509155,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 24
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "19 Kg Cylinders (Including New & Replacement)",
+    "description_b": "5 Kg Cylinders (Including New & Replacement)",
+    "normalized_a": "19 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "normalized_b": "5 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+    "cosine_similarity": 0.8282489776611328,
+    "attributes_a": {
+      "uom": "KG"
+    },
+    "attributes_b": {
+      "uom": "KG"
+    },
+    "attribute_status": "COMPATIBLE",
+    "rank": 25
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Rotary Evaporator",
+    "description_b": "20L Automatic Rotary Evaporation System",
+    "normalized_a": "ROTARY EVAPORATOR",
+    "normalized_b": "20 L AUTOMATIC ROTARY EVAPORATION SYSTEM",
+    "cosine_similarity": 0.8239293694496155,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 26
+  },
+  {
+    "organization_a": "Oil India Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Rotary Evaporator",
+    "description_b": "20L Automatic Rotary Evaporation System",
+    "normalized_a": "ROTARY EVAPORATOR",
+    "normalized_b": "20 L AUTOMATIC ROTARY EVAPORATION SYSTEM",
+    "cosine_similarity": 0.8239293694496155,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 27
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Centrifugal Pump",
+    "description_b": "API 610 Centrifugal Pump",
+    "normalized_a": "CENTRIFUGAL PUMP",
+    "normalized_b": "API 610 CENTRIFUGAL PUMP",
+    "cosine_similarity": 0.8138826489448547,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 28
+  },
+  {
+    "organization_a": "Oil India Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "Centrifugal Pump",
+    "description_b": "API 610 Centrifugal Pump",
+    "normalized_a": "CENTRIFUGAL PUMP",
+    "normalized_b": "API 610 CENTRIFUGAL PUMP",
+    "cosine_similarity": 0.8138826489448547,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 29
+  },
+  {
+    "organization_a": "Indian Oil Corporation Limited",
+    "organization_b": "Indian Oil Corporation Limited",
+    "description_a": "8133/8120",
+    "description_b": "81621/81622/81623",
+    "normalized_a": "8133 8120",
+    "normalized_b": "81621 81622 81623",
+    "cosine_similarity": 0.8052153587341309,
+    "attributes_a": {},
+    "attributes_b": {},
+    "attribute_status": "UNKNOWN",
+    "rank": 30
+  }
+]

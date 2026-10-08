@@ -1,0 +1,7 @@
+{
+  "material_id": "M000744",
+  "normalized_text": "4 MM FOR THE SIDES. THE TOP BAFFLE PLATES SHALL BE OF 3 MM THE TANK SHALL BE OF WELDED CONSTRUCTION",
+  "text_hash": "8a6d22be71270a2b660c288d95d64e193c99669c047c75a07f71f28918a16183",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.738062+00:00"
+}

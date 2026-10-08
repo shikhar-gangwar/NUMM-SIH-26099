@@ -1,0 +1,7 @@
+{
+  "material_id": "M000054",
+  "normalized_text": "AIR ENDS OF SCREW COMPRESSORS",
+  "text_hash": "33cf19512f9a682ce5d9c951e22992788f377024c50f6eba26128f1ab060bd47",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.415043+00:00"
+}

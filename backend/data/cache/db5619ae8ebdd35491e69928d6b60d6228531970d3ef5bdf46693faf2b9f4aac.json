@@ -1,0 +1,7 @@
+{
+  "material_id": null,
+  "normalized_text": "BOLT HEXAGONAL M16 X 70 HIGH TENSILE",
+  "text_hash": "db5619ae8ebdd35491e69928d6b60d6228531970d3ef5bdf46693faf2b9f4aac",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:33:28.061983+00:00"
+}

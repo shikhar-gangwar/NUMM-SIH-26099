@@ -1,0 +1,7 @@
+{
+  "material_id": "M000068",
+  "normalized_text": "ANTIOXIDANT AO-1330 -PREVENTS POLYMER FROM DEGRADATION CAUSED BY EXPOSURE TO HEAT ULTRAVIOLET RADIATION UV AND MECHANICAL SHEAR",
+  "text_hash": "d5527f82e5f2770bcf91082fc87983f70e8736f4325932b144d136c993aa9db2",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.247762+00:00"
+}

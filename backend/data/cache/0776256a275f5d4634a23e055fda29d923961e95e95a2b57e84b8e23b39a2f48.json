@@ -1,0 +1,7 @@
+{
+  "material_id": "M000016",
+  "normalized_text": "2-HYDROXY-4-N- OCTOXYBENZOPHENONE CYASORB 531 UV-1",
+  "text_hash": "0776256a275f5d4634a23e055fda29d923961e95e95a2b57e84b8e23b39a2f48",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.082679+00:00"
+}

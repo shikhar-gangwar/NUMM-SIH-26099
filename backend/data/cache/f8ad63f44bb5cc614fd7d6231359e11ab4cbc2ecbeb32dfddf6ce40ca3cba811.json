@@ -1,0 +1,7 @@
+{
+  "material_id": "M000731",
+  "normalized_text": "EOI FOR ISSUE OF POND ASH FROM NTPC",
+  "text_hash": "f8ad63f44bb5cc614fd7d6231359e11ab4cbc2ecbeb32dfddf6ce40ca3cba811",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.615827+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000190",
+  "normalized_text": "FREEZE DRYER",
+  "text_hash": "975c9a1f7f7eca5475def62eb29db7bce20f11d6d3672bcc1dab4cbc18e908b1",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.303148+00:00"
+}

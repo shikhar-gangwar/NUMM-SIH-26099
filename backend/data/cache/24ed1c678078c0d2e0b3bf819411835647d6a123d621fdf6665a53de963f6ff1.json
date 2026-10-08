@@ -1,0 +1,7 @@
+{
+  "material_id": "M000065",
+  "normalized_text": "ANTI CHAFE CHAIN",
+  "text_hash": "24ed1c678078c0d2e0b3bf819411835647d6a123d621fdf6665a53de963f6ff1",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.077232+00:00"
+}

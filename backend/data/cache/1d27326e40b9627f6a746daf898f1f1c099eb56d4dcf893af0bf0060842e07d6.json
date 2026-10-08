@@ -1,0 +1,7 @@
+{
+  "material_id": "M000032",
+  "normalized_text": "AMC OF BELSORP HP INSTRUMENT",
+  "text_hash": "1d27326e40b9627f6a746daf898f1f1c099eb56d4dcf893af0bf0060842e07d6",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.565136+00:00"
+}

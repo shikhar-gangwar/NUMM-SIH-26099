@@ -1,0 +1,7 @@
+{
+  "material_id": "M000057",
+  "normalized_text": "ANALYTICAL BALANCE",
+  "text_hash": "33eb282956e569adaedb5900dbe6fd86182c8b15380b2a4ad6bb1b1588fa11ea",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.539841+00:00"
+}

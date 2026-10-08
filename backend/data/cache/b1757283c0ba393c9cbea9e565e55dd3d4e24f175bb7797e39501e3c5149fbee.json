@@ -1,0 +1,7 @@
+{
+  "material_id": "M000077",
+  "normalized_text": "BALL VALVES OF DUPLEX ALLOY 276",
+  "text_hash": "b1757283c0ba393c9cbea9e565e55dd3d4e24f175bb7797e39501e3c5149fbee",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.707636+00:00"
+}

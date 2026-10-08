@@ -1,0 +1,7 @@
+{
+  "material_id": "M002589",
+  "normalized_text": "127.00 MM 5 API GRADE G-105 DRILL PIPE 127.00 MM 5 API GRADE S-135 DRILL PIPE",
+  "text_hash": "ad54882b3afcc952c1a83dabbe9f8b457b2394a26315b8b8752bdd455e81a713",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.908490+00:00"
+}

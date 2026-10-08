@@ -1,0 +1,7 @@
+{
+  "material_id": "M002574",
+  "normalized_text": "1.FIRE DETECTION ALARM SYSTEM 2. FIRE DETECTION AND ALARM SYSTEM 3. 4.5 KG CO2 FIRE EXTINGUISHER",
+  "text_hash": "44faeb777bbb20732b36b74cc644f51143a0e38bdff3378f1d82bf0b4c3ef55b",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.571011+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000395",
+  "normalized_text": "ROTARY EVAPORATOR",
+  "text_hash": "e2d38e8681e4eaa96b51194d655038906efc17957a2cb56b5feb25d70301fbf4",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.412240+00:00"
+}

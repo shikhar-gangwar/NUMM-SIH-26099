@@ -1,0 +1,7 @@
+{
+  "material_id": "M000740",
+  "normalized_text": "PROCUREMENT OF ASTM 517 GR-F STEEL",
+  "text_hash": "56957623d96c60f2fe77e60a87888746cad3a86edd6863361b36f27312c2f0a0",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.323252+00:00"
+}

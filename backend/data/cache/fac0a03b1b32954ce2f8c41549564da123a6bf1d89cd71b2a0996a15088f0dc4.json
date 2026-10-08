@@ -1,0 +1,7 @@
+{
+  "material_id": "M000043",
+  "normalized_text": "API 6D VALVES NOS",
+  "text_hash": "fac0a03b1b32954ce2f8c41549564da123a6bf1d89cd71b2a0996a15088f0dc4",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.997913+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000015",
+  "normalized_text": "19 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+  "text_hash": "1707b222952303de2757536a10b13b05f91646f0625c1559ad911dcdeb0a9698",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.051219+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000071",
+  "normalized_text": "ASSAY ANALYSIS OF FRESH SPENT CATALYST",
+  "text_hash": "a8ee72eaaff2c93f91fbb2c986a3ea564817079d26be2befd84ebd7cdf721890",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.459569+00:00"
+}

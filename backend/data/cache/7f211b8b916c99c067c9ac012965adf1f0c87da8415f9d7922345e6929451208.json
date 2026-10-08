@@ -1,0 +1,7 @@
+{
+  "material_id": "M000739",
+  "normalized_text": "PROCUREMENT INSTALLATION OF 98 INCH DISPLAY SYSTEM",
+  "text_hash": "7f211b8b916c99c067c9ac012965adf1f0c87da8415f9d7922345e6929451208",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.224015+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M002581",
+  "normalized_text": "11 INCHES X 10 M DOUBLE RAM TYPE BOP",
+  "text_hash": "8503084eed4a7594393a01f2eb57d72c7570901c74f7382ac28b66fc7b76ff70",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.135292+00:00"
+}

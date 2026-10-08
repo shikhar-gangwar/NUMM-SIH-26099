@@ -1,0 +1,7 @@
+{
+  "material_id": "M000724",
+  "normalized_text": "CONSTRUCTION OF AN ALTERNATE",
+  "text_hash": "415c7cc98087ff4fc6c12a0b0123242f44ede8ec4349687511c3102a35dc8e3d",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.915099+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000411",
+  "normalized_text": "SCREW PUMP",
+  "text_hash": "02309de7ec5dbd509ac63427d7a06fda1ff302272ccd22a08cda52054fed24c2",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.445882+00:00"
+}

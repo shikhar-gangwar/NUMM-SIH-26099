@@ -1,0 +1,7 @@
+{
+  "material_id": "M000734",
+  "normalized_text": "EXPRESSION OF INTEREST FOR IDENTIFICATION OF DOMESTIC VENDORS",
+  "text_hash": "3c083a91f72ae456ca9c61605e3063c63c90f4755da29b7629086b7872cc1fc5",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.947650+00:00"
+}

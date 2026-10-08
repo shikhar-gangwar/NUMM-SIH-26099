@@ -1,0 +1,7 @@
+{
+  "material_id": "M000018",
+  "normalized_text": "20 L AUTOMATIC ROTARY EVAPORATION SYSTEM",
+  "text_hash": "089a1b2f530dc80b6b6985913e55016f03b55f3c64a4ee988bd705ab8f01c1c2",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.125274+00:00"
+}

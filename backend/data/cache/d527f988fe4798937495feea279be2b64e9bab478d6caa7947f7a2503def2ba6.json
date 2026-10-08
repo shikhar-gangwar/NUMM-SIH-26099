@@ -1,0 +1,7 @@
+{
+  "material_id": "M000738",
+  "normalized_text": "LOADING TRANSPORTATION UNLOADING",
+  "text_hash": "d527f988fe4798937495feea279be2b64e9bab478d6caa7947f7a2503def2ba6",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.159852+00:00"
+}

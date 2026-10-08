@@ -1,0 +1,7 @@
+{
+  "material_id": "M000035",
+  "normalized_text": "AMC OF HYDROGEN INFRASTRUCTURE",
+  "text_hash": "e767247486680f4fe20a8f2ce77c28945a54235f674c8ea276fb73d096a424eb",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.696870+00:00"
+}

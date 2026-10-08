@@ -1,0 +1,7 @@
+{
+  "material_id": "M000053",
+  "normalized_text": "AIR DRYER",
+  "text_hash": "01653fc7d402caafca7b78845894c43320605881d8690f63c490195b4d36a550",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.390592+00:00"
+}

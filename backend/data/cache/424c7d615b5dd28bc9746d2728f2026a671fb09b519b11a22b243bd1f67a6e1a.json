@@ -1,0 +1,7 @@
+{
+  "material_id": "M000076",
+  "normalized_text": "AUTOMATIC SMOKE POINT",
+  "text_hash": "424c7d615b5dd28bc9746d2728f2026a671fb09b519b11a22b243bd1f67a6e1a",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.670983+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000049",
+  "normalized_text": "ADVANCED METALLURGICAL MICROSCOPE",
+  "text_hash": "71cbb6fb286032e2b13275da799bf05c679d7eaee8ce963ac1e16ef0d28bc6cd",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.296569+00:00"
+}

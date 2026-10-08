@@ -1,0 +1,7 @@
+{
+  "material_id": "e778a25b-cbcc-458e-9c16-a6ab9fa65a18",
+  "normalized_text": "14.2 KG CYLINDERS INCLUDING NEW REPLACEMENT",
+  "text_hash": "9eacb49ce23d7d5e676cfe21eb25aab4a589e8210c7466a10908fe4132347524",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:58:08.265543+00:00"
+}

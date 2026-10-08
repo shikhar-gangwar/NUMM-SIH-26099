@@ -1,0 +1,7 @@
+{
+  "material_id": null,
+  "normalized_text": "BALL VALVE 1 INCH CLASS 300 FLANGED SS316",
+  "text_hash": "9373936c03769e73cca45694b4682e86ebade5496b1190e95cfa39930104cb8a",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:33:28.239323+00:00"
+}

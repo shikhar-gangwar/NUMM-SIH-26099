@@ -1,0 +1,7 @@
+{
+  "material_id": "M000041",
+  "normalized_text": "API 610 CENTRIFUGAL PUMP",
+  "text_hash": "27f8ed581a661668de2aadf695f8de4cfff8f7a7e6480f45ae94f5ee0c1ffa46",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.926910+00:00"
+}
