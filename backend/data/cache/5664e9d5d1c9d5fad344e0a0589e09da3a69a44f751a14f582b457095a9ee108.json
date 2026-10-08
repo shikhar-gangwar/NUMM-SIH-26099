@@ -1,0 +1,7 @@
+{
+  "material_id": "M000070",
+  "normalized_text": "ASPHALTENE EXTRACTION SYSTEM",
+  "text_hash": "5664e9d5d1c9d5fad344e0a0589e09da3a69a44f751a14f582b457095a9ee108",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.400931+00:00"
+}

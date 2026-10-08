@@ -1,0 +1,7 @@
+{
+  "material_id": "M002567",
+  "normalized_text": "1 PLASTER OF PARIS 10 CM 2 PLASTER OF PARIS 15 CM",
+  "text_hash": "2a1c0edcb905db3200d53137b62884f5d04aae23a944d645e07542f9f6ac6f60",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.878830+00:00"
+}

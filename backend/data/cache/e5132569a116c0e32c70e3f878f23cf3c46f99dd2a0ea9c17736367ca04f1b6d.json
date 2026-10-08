@@ -1,0 +1,7 @@
+{
+  "material_id": "M000079",
+  "normalized_text": "BALE FILM WRAPPER",
+  "text_hash": "e5132569a116c0e32c70e3f878f23cf3c46f99dd2a0ea9c17736367ca04f1b6d",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.780681+00:00"
+}

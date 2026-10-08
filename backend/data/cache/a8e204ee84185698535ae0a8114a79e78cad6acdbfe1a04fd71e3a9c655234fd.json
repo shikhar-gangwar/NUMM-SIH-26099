@@ -1,0 +1,7 @@
+{
+  "material_id": "M000746",
+  "normalized_text": "CONVEYOR BELT NN EP ABOVE 1400 MM WIDTH AND UPTO 1600 MM WIDTH WITH",
+  "text_hash": "a8e204ee84185698535ae0a8114a79e78cad6acdbfe1a04fd71e3a9c655234fd",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.983095+00:00"
+}

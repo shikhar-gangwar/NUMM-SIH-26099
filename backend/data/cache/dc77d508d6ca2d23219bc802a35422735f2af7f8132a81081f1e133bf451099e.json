@@ -1,0 +1,7 @@
+{
+  "material_id": "M000055",
+  "normalized_text": "ALKYL AMINE ETHOXYLATE ATMER 163 - FOR NEUTRALIZATION OF CATALYST CO CATALYST AND WORKS AS ANTI- STATIC AGENT",
+  "text_hash": "dc77d508d6ca2d23219bc802a35422735f2af7f8132a81081f1e133bf451099e",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.467474+00:00"
+}

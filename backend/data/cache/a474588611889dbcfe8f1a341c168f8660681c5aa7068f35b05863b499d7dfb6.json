@@ -1,0 +1,7 @@
+{
+  "material_id": "M000031",
+  "normalized_text": "AMC FOR MICRO GAS CHROMATOGRAPH",
+  "text_hash": "a474588611889dbcfe8f1a341c168f8660681c5aa7068f35b05863b499d7dfb6",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.524276+00:00"
+}

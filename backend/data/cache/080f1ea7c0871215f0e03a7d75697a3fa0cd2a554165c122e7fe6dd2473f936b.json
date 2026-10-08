@@ -1,0 +1,7 @@
+{
+  "material_id": "M000078",
+  "normalized_text": "BAGGING AND PELLETIZING PLANT",
+  "text_hash": "080f1ea7c0871215f0e03a7d75697a3fa0cd2a554165c122e7fe6dd2473f936b",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.749322+00:00"
+}

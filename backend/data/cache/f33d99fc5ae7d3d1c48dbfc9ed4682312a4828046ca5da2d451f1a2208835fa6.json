@@ -1,0 +1,7 @@
+{
+  "material_id": "M000723",
+  "normalized_text": "CONSTRUCTION OF ACCESS OR",
+  "text_hash": "f33d99fc5ae7d3d1c48dbfc9ed4682312a4828046ca5da2d451f1a2208835fa6",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.840579+00:00"
+}

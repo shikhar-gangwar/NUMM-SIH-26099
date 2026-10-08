@@ -1,0 +1,7 @@
+{
+  "material_id": "M002588",
+  "normalized_text": "125 KVA GENSET",
+  "text_hash": "87a26be6375d4b1e956c04da986d5aceea787143c6dc3fd4eec4fd87971a0a38",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.766023+00:00"
+}

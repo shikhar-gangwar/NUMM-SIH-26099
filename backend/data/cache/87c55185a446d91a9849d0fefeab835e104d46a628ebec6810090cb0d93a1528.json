@@ -1,0 +1,7 @@
+{
+  "material_id": "M000075",
+  "normalized_text": "AUTOMATIC TITRATOR WITH KF",
+  "text_hash": "87c55185a446d91a9849d0fefeab835e104d46a628ebec6810090cb0d93a1528",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.645852+00:00"
+}

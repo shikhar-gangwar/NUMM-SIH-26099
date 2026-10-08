@@ -1,0 +1,7 @@
+{
+  "material_id": "M002584",
+  "normalized_text": "11 0.415 KV 500 KVA TRANSFORMER",
+  "text_hash": "3ca3bcbab52096945d87e38b4fde03b4c96c47f00e8fb01fa3f4404005f86f3e",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.368177+00:00"
+}

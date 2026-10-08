@@ -1,0 +1,7 @@
+{
+  "material_id": "M000050",
+  "normalized_text": "AGITATOR MIXER SPARES",
+  "text_hash": "59297ddc65a5e289acca357e8a22a644295916cf93ada9c17dff960ab94b2a83",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.331787+00:00"
+}

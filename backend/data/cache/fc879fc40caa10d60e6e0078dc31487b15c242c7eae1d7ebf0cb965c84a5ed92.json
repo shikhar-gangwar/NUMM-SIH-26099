@@ -1,0 +1,7 @@
+{
+  "material_id": "M000044",
+  "normalized_text": "ATF AVIATION TURBINE FUEL MEROX CATALYST PRE IMPREGNATED ACTIVATED CHARCOAL",
+  "text_hash": "fc879fc40caa10d60e6e0078dc31487b15c242c7eae1d7ebf0cb965c84a5ed92",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.036517+00:00"
+}

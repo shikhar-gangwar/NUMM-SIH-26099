@@ -1,0 +1,7 @@
+{
+  "material_id": "M000033",
+  "normalized_text": "AMC OF BET SURFACE AREA ANALYZER",
+  "text_hash": "c9a0d86c7929ecae85d0bc9582658c7e1afc403780738b405647593baaf80367",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.612738+00:00"
+}

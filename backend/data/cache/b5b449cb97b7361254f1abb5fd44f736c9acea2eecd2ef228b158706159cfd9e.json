@@ -1,0 +1,7 @@
+{
+  "material_id": "M000048",
+  "normalized_text": "ADDITIVE DOSING MACHINES",
+  "text_hash": "b5b449cb97b7361254f1abb5fd44f736c9acea2eecd2ef228b158706159cfd9e",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.267311+00:00"
+}

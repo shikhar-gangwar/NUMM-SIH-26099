@@ -1,0 +1,7 @@
+{
+  "material_id": "M000029",
+  "normalized_text": "A3 PRINTER",
+  "text_hash": "f8d44857a7327d0c6c78a79a526790d23dc1cc2903af235f18836d09009280a9",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.445414+00:00"
+}

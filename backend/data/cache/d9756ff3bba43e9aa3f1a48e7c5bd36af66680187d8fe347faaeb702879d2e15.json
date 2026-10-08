@@ -1,0 +1,7 @@
+{
+  "material_id": "M000019",
+  "normalized_text": "425 KG CYLINDERS",
+  "text_hash": "d9756ff3bba43e9aa3f1a48e7c5bd36af66680187d8fe347faaeb702879d2e15",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.142532+00:00"
+}

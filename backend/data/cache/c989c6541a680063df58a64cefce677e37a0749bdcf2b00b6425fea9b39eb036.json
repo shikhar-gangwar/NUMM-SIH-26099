@@ -1,0 +1,7 @@
+{
+  "material_id": "M002580",
+  "normalized_text": "10K HYDRAULIC HAND PUMP WITH SELF CONTAINED RESERVOIR OIL INDIA LIMITED",
+  "text_hash": "c989c6541a680063df58a64cefce677e37a0749bdcf2b00b6425fea9b39eb036",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.072533+00:00"
+}

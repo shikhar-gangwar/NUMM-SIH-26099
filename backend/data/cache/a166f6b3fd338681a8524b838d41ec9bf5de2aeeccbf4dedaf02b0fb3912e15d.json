@@ -1,0 +1,7 @@
+{
+  "material_id": "M000743",
+  "normalized_text": "SUPPLY OF OIL FILTRATION MACHINES WITH OR WITHOUT",
+  "text_hash": "a166f6b3fd338681a8524b838d41ec9bf5de2aeeccbf4dedaf02b0fb3912e15d",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.605128+00:00"
+}

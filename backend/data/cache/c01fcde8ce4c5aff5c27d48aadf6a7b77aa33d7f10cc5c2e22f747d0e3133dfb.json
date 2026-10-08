@@ -1,0 +1,7 @@
+{
+  "material_id": "M000036",
+  "normalized_text": "AMC OF MATLAB SOFTWARE",
+  "text_hash": "c01fcde8ce4c5aff5c27d48aadf6a7b77aa33d7f10cc5c2e22f747d0e3133dfb",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.742447+00:00"
+}

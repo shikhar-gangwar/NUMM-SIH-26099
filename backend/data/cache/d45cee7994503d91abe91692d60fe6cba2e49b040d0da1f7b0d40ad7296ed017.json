@@ -1,0 +1,7 @@
+{
+  "material_id": "59e4c569-0582-46d6-b751-15fc13e4fe14",
+  "normalized_text": "1507 1534",
+  "text_hash": "d45cee7994503d91abe91692d60fe6cba2e49b040d0da1f7b0d40ad7296ed017",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:58:08.306181+00:00"
+}

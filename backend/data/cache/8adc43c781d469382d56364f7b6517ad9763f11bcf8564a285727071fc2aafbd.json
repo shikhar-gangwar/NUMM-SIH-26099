@@ -1,0 +1,7 @@
+{
+  "material_id": "M000061",
+  "normalized_text": "ANTI OXIDANT AO 1010 PENTAERYTHRITOL TETRAKIS 3- 3 5-DI-TERT- BUTYL-4- HYDROXYPHENYL PROPIONATE",
+  "text_hash": "8adc43c781d469382d56364f7b6517ad9763f11bcf8564a285727071fc2aafbd",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.845483+00:00"
+}

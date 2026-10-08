@@ -1,0 +1,7 @@
+{
+  "material_id": "M000730",
+  "normalized_text": "EOI DOCUMENT FOR STUDY FOR STEAM TURBINE DESIGN",
+  "text_hash": "9f1e16f224ef01d26864a9079418a6cda56cd7e6b1bf7b0612c4db47d82a72d1",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.519535+00:00"
+}

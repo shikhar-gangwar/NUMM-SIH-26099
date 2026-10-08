@@ -1,0 +1,7 @@
+{
+  "material_id": "M000051",
+  "normalized_text": "AIR COMPRESSOR",
+  "text_hash": "3a764a00b9efc5863856263242ca39090df10f34d9a0e0d2d0d0e58232c74395",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.192081+00:00"
+}

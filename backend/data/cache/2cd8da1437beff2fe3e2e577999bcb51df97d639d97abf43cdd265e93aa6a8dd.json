@@ -1,0 +1,7 @@
+{
+  "material_id": "M000074",
+  "normalized_text": "AUTOMATIC STORAGE RETRIEVAL SYSTEM FOR PETROCHEMICAL WAREHOUSE",
+  "text_hash": "2cd8da1437beff2fe3e2e577999bcb51df97d639d97abf43cdd265e93aa6a8dd",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.618717+00:00"
+}

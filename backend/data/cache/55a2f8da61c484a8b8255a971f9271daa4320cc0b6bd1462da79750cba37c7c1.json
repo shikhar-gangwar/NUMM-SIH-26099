@@ -1,0 +1,7 @@
+{
+  "material_id": "M002577",
+  "normalized_text": "10 NB VERTICAL DUMP VALVE ASSEMBLY",
+  "text_hash": "55a2f8da61c484a8b8255a971f9271daa4320cc0b6bd1462da79750cba37c7c1",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.883910+00:00"
+}

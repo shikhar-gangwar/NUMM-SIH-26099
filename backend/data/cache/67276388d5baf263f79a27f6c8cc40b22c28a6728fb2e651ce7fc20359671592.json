@@ -1,0 +1,7 @@
+{
+  "material_id": "M000052",
+  "normalized_text": "AIR CONDITIONER SPARES",
+  "text_hash": "67276388d5baf263f79a27f6c8cc40b22c28a6728fb2e651ce7fc20359671592",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:15.366062+00:00"
+}

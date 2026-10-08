@@ -1,0 +1,7 @@
+{
+  "material_id": "M002582",
+  "normalized_text": "11 KV 99 SQ MM COVERED CONDUCTORS",
+  "text_hash": "adfaf4ba941a15c41dcc24ac0bff5e88180e08cf36a1ed799f72ddba9ec8146f",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.190458+00:00"
+}

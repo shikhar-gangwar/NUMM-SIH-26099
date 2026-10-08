@@ -1,0 +1,7 @@
+{
+  "material_id": "M000487",
+  "normalized_text": "VACUUM OVEN",
+  "text_hash": "e18190b8dab8a573adf35e680f9f3e6c44b8548a49b765cb6d18b653c898d6ac",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.566197+00:00"
+}

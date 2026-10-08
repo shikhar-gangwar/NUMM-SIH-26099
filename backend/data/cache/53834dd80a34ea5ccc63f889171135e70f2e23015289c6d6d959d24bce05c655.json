@@ -1,0 +1,7 @@
+{
+  "material_id": "M002583",
+  "normalized_text": "11-3.3 0.415 KV 500 KVA DUAL CORE DRY TYPE TRANSFORMER",
+  "text_hash": "53834dd80a34ea5ccc63f889171135e70f2e23015289c6d6d959d24bce05c655",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.276051+00:00"
+}

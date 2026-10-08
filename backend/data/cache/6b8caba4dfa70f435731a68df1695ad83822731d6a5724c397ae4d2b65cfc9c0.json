@@ -1,0 +1,7 @@
+{
+  "material_id": "M002338",
+  "normalized_text": "SODIUM HYPOCHLORITE SOLUTION",
+  "text_hash": "6b8caba4dfa70f435731a68df1695ad83822731d6a5724c397ae4d2b65cfc9c0",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.498292+00:00"
+}

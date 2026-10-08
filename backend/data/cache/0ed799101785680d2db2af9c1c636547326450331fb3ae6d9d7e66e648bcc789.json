@@ -1,0 +1,7 @@
+{
+  "material_id": "M000727",
+  "normalized_text": "COMPREHENSIVE OPERATION AND",
+  "text_hash": "0ed799101785680d2db2af9c1c636547326450331fb3ae6d9d7e66e648bcc789",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.222414+00:00"
+}

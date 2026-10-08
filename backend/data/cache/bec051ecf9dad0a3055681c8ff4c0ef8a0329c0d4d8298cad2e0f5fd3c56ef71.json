@@ -1,0 +1,7 @@
+{
+  "material_id": "M000729",
+  "normalized_text": "CYBER SECURITY AUDIT OF OT IT SYSTEMS",
+  "text_hash": "bec051ecf9dad0a3055681c8ff4c0ef8a0329c0d4d8298cad2e0f5fd3c56ef71",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.454849+00:00"
+}

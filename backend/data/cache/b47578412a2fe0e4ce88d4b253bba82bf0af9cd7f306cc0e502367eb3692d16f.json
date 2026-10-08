@@ -1,0 +1,7 @@
+{
+  "material_id": "M000725",
+  "normalized_text": "CIVIL WORKS OF ICT 1500 MVA 765 400KV",
+  "text_hash": "b47578412a2fe0e4ce88d4b253bba82bf0af9cd7f306cc0e502367eb3692d16f",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.999817+00:00"
+}

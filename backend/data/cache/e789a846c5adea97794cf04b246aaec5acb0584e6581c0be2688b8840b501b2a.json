@@ -1,0 +1,7 @@
+{
+  "material_id": "M000030",
+  "normalized_text": "ACDB PANEL NOS",
+  "text_hash": "e789a846c5adea97794cf04b246aaec5acb0584e6581c0be2688b8840b501b2a",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.475550+00:00"
+}

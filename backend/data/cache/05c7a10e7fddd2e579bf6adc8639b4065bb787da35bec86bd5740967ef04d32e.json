@@ -1,0 +1,7 @@
+{
+  "material_id": "M000732",
+  "normalized_text": "EMPANELMENT OF CONSULTING AGENCIES",
+  "text_hash": "05c7a10e7fddd2e579bf6adc8639b4065bb787da35bec86bd5740967ef04d32e",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.724121+00:00"
+}

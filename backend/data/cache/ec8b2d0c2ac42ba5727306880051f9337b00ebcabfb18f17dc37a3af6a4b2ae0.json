@@ -1,0 +1,7 @@
+{
+  "material_id": null,
+  "normalized_text": "BOLT HEXAGONAL M16 X 70 GRADE 8.8",
+  "text_hash": "ec8b2d0c2ac42ba5727306880051f9337b00ebcabfb18f17dc37a3af6a4b2ae0",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T20:33:28.271238+00:00"
+}

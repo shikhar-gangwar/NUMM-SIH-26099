@@ -1,0 +1,7 @@
+{
+  "material_id": "M002566",
+  "normalized_text": "09 KG DCP FIRE EXTINGUISHERS STORED PRESSURE TYPE FIRE EXTINGUISHER INSPECTION TAG FIRE EXTINGUISHER FLOOR STAND",
+  "text_hash": "07c2ecda78d9001fd247fe4e68a09327691505b01d723dc7cfcd6b465742c729",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.804941+00:00"
+}

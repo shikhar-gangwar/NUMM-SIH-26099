@@ -1,0 +1,7 @@
+{
+  "material_id": "M000038",
+  "normalized_text": "AO1076 OCTADECYL 3 5-DI- TERT -BUTYL-4- HYDROXY PHENYL - PROPIONATE",
+  "text_hash": "ab2a3593377743700b36272ebdbd8280deac1736440939781f0c1de3b31aee67",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.818293+00:00"
+}

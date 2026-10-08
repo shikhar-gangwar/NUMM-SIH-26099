@@ -1,0 +1,7 @@
+{
+  "material_id": "M000722",
+  "normalized_text": "CHIMNEY PACKAGE FOR GADARWARA STPP STAGE",
+  "text_hash": "b64b612544ca138c1c799b60cd217835bf6214198578209943701c81085ab73b",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:40.753017+00:00"
+}

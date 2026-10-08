@@ -1,0 +1,7 @@
+{
+  "material_id": "M000040",
+  "normalized_text": "API 579 SOFTWARE",
+  "text_hash": "68278b2b6c07232d23045368e788bc67b82ac731801749f983f7321e87e484eb",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.901224+00:00"
+}

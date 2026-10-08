@@ -1,0 +1,7 @@
+{
+  "material_id": "M000741",
+  "normalized_text": "PROCUREMENT OF DISPLAY SYSTEMS ALONG",
+  "text_hash": "272c64b6dfc48cace8e164ef2b807fadf63a8c4832e174e1d32937d9ea6e9290",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:42.404216+00:00"
+}

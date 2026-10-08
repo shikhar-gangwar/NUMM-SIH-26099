@@ -1,0 +1,7 @@
+{
+  "material_id": "M000169",
+  "normalized_text": "ENGINE SPARES",
+  "text_hash": "f0ebf5832edf9fb576b9d93788c7b317e6b2dc76766fade3c71ab7605dca1e28",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:17:43.261530+00:00"
+}

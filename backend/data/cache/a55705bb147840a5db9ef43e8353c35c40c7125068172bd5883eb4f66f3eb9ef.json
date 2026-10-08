@@ -1,0 +1,7 @@
+{
+  "material_id": "M000034",
+  "normalized_text": "AMC OF DCN ANALYZER",
+  "text_hash": "a55705bb147840a5db9ef43e8353c35c40c7125068172bd5883eb4f66f3eb9ef",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:14.667403+00:00"
+}

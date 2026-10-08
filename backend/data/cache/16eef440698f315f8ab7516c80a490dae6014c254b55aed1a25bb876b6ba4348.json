@@ -1,0 +1,7 @@
+{
+  "material_id": "M002575",
+  "normalized_text": "10 KVA DIESEL ENGINE DRIVEN ACOUSTIC GENERATING SET",
+  "text_hash": "16eef440698f315f8ab7516c80a490dae6014c254b55aed1a25bb876b6ba4348",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:41.667832+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "material_id": "M000721",
+  "normalized_text": "BALANCE WORKS OF BARRAGE AND",
+  "text_hash": "04d6e41fbc64e32bd3f50e086b644490d47c3041c35c5274fc5fb00a9e9895dc",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:27:13.476364+00:00"
+}

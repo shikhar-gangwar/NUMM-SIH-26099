@@ -1,0 +1,7 @@
+{
+  "material_id": "M000064",
+  "normalized_text": "ANTI OXIDANT AO 168 AO9",
+  "text_hash": "9be4529194ff39bc14a731435f37947b73738a1073e2234b7273e2db72c739e9",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_created_at": "2026-10-07T21:18:16.046468+00:00"
+}
